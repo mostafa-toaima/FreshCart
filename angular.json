@@ -1,423 +1,463 @@
 {
-  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1,
-  "cli": {
-    "packageManager": "npm"
-  },
-  "newProjectRoot": "projects",
-  "projects": {
-    "freshcart-shell": {
-      "projectType": "application",
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss"
-        }
-      },
-      "root": "projects/freshcart-shell",
-      "sourceRoot": "projects/freshcart-shell/src",
-      "prefix": "app",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:application",
-          "options": {
-            "outputPath": "dist/freshcart-shell",
-            "index": "projects/freshcart-shell/src/index.html",
-            "browser": "projects/freshcart-shell/src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
-            "tsConfig": "projects/freshcart-shell/tsconfig.app.json",
-            "inlineStyleLanguage": "scss",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "projects/freshcart-shell/public"
-              }
-            ],
-            "styles": [
-              "projects/freshcart-shell/src/styles.scss"
-            ],
-            "scripts": []
-          },
-          "configurations": {
-            "production": {
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "2kB",
-                  "maximumError": "4kB"
-                }
-              ],
-              "outputHashing": "all"
-            },
-            "development": {
-              "optimization": false,
-              "extractLicenses": false,
-              "sourceMap": true
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "configurations": {
-            "production": {
-              "buildTarget": "freshcart-shell:build:production"
-            },
-            "development": {
-              "buildTarget": "freshcart-shell:build:development"
-            }
-          },
-          "defaultConfiguration": "development"
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n"
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
-            "tsConfig": "projects/freshcart-shell/tsconfig.spec.json",
-            "inlineStyleLanguage": "scss",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "projects/freshcart-shell/public"
-              }
-            ],
-            "styles": [
-              "projects/freshcart-shell/src/styles.scss"
-            ],
-            "scripts": []
-          }
-        }
-      }
-    },
-    "freshcart-products": {
-      "projectType": "application",
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss"
-        }
-      },
-      "root": "projects/freshcart-products",
-      "sourceRoot": "projects/freshcart-products/src",
-      "prefix": "app",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:application",
-          "options": {
-            "outputPath": "dist/freshcart-products",
-            "index": "projects/freshcart-products/src/index.html",
-            "browser": "projects/freshcart-products/src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
-            "tsConfig": "projects/freshcart-products/tsconfig.app.json",
-            "inlineStyleLanguage": "scss",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "projects/freshcart-products/public"
-              }
-            ],
-            "styles": [
-              "projects/freshcart-products/src/styles.scss"
-            ],
-            "scripts": []
-          },
-          "configurations": {
-            "production": {
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "2kB",
-                  "maximumError": "4kB"
-                }
-              ],
-              "outputHashing": "all"
-            },
-            "development": {
-              "optimization": false,
-              "extractLicenses": false,
-              "sourceMap": true
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "configurations": {
-            "production": {
-              "buildTarget": "freshcart-products:build:production"
-            },
-            "development": {
-              "buildTarget": "freshcart-products:build:development"
-            }
-          },
-          "defaultConfiguration": "development"
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n"
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
-            "tsConfig": "projects/freshcart-products/tsconfig.spec.json",
-            "inlineStyleLanguage": "scss",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "projects/freshcart-products/public"
-              }
-            ],
-            "styles": [
-              "projects/freshcart-products/src/styles.scss"
-            ],
-            "scripts": []
-          }
-        }
-      }
-    },
-    "freshcart-cart": {
-      "projectType": "application",
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss"
-        }
-      },
-      "root": "projects/freshcart-cart",
-      "sourceRoot": "projects/freshcart-cart/src",
-      "prefix": "app",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:application",
-          "options": {
-            "outputPath": "dist/freshcart-cart",
-            "index": "projects/freshcart-cart/src/index.html",
-            "browser": "projects/freshcart-cart/src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
-            "tsConfig": "projects/freshcart-cart/tsconfig.app.json",
-            "inlineStyleLanguage": "scss",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "projects/freshcart-cart/public"
-              }
-            ],
-            "styles": [
-              "projects/freshcart-cart/src/styles.scss"
-            ],
-            "scripts": []
-          },
-          "configurations": {
-            "production": {
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "2kB",
-                  "maximumError": "4kB"
-                }
-              ],
-              "outputHashing": "all"
-            },
-            "development": {
-              "optimization": false,
-              "extractLicenses": false,
-              "sourceMap": true
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "configurations": {
-            "production": {
-              "buildTarget": "freshcart-cart:build:production"
-            },
-            "development": {
-              "buildTarget": "freshcart-cart:build:development"
-            }
-          },
-          "defaultConfiguration": "development"
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n"
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
-            "tsConfig": "projects/freshcart-cart/tsconfig.spec.json",
-            "inlineStyleLanguage": "scss",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "projects/freshcart-cart/public"
-              }
-            ],
-            "styles": [
-              "projects/freshcart-cart/src/styles.scss"
-            ],
-            "scripts": []
-          }
-        }
-      }
-    },
-    "freshcart-auth": {
-      "projectType": "application",
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss"
-        }
-      },
-      "root": "projects/freshcart-auth",
-      "sourceRoot": "projects/freshcart-auth/src",
-      "prefix": "app",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:application",
-          "options": {
-            "outputPath": "dist/freshcart-auth",
-            "index": "projects/freshcart-auth/src/index.html",
-            "browser": "projects/freshcart-auth/src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
-            "tsConfig": "projects/freshcart-auth/tsconfig.app.json",
-            "inlineStyleLanguage": "scss",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "projects/freshcart-auth/public"
-              }
-            ],
-            "styles": [
-              "projects/freshcart-auth/src/styles.scss"
-            ],
-            "scripts": []
-          },
-          "configurations": {
-            "production": {
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "2kB",
-                  "maximumError": "4kB"
-                }
-              ],
-              "outputHashing": "all"
-            },
-            "development": {
-              "optimization": false,
-              "extractLicenses": false,
-              "sourceMap": true
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "configurations": {
-            "production": {
-              "buildTarget": "freshcart-auth:build:production"
-            },
-            "development": {
-              "buildTarget": "freshcart-auth:build:development"
-            }
-          },
-          "defaultConfiguration": "development"
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n"
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
-            "tsConfig": "projects/freshcart-auth/tsconfig.spec.json",
-            "inlineStyleLanguage": "scss",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "projects/freshcart-auth/public"
-              }
-            ],
-            "styles": [
-              "projects/freshcart-auth/src/styles.scss"
-            ],
-            "scripts": []
-          }
-        }
-      }
-    },
-    "shared": {
-      "projectType": "library",
-      "root": "projects/shared",
-      "sourceRoot": "projects/shared/src",
-      "prefix": "lib",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
-          "options": {
-            "project": "projects/shared/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "projects/shared/tsconfig.lib.prod.json"
-            },
-            "development": {
-              "tsConfig": "projects/shared/tsconfig.lib.json"
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "tsConfig": "projects/shared/tsconfig.spec.json",
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ]
-          }
-        }
-      }
-    }
-  }
+	"$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+	"version": 1,
+	"cli": {
+		"packageManager": "npm"
+	},
+	"newProjectRoot": "projects",
+	"projects": {
+		"freshcart-shell": {
+			"projectType": "application",
+			"schematics": {
+				"@schematics/angular:component": {
+					"style": "scss"
+				}
+			},
+			"root": "projects/freshcart-shell",
+			"sourceRoot": "projects/freshcart-shell/src",
+			"prefix": "app",
+			"architect": {
+				"build": {
+					"builder": "ngx-build-plus:browser",
+					"options": {
+						"outputPath": "dist/freshcart-shell",
+						"index": "projects/freshcart-shell/src/index.html",
+						"polyfills": [
+							"zone.js"
+						],
+						"tsConfig": "projects/freshcart-shell/tsconfig.app.json",
+						"inlineStyleLanguage": "scss",
+						"assets": [
+							{
+								"glob": "**/*",
+								"input": "projects/freshcart-shell/public",
+								"output": "."
+							}
+						],
+						"styles": [
+							"projects/freshcart-shell/src/styles.scss"
+						],
+						"scripts": [],
+						"main": "projects/freshcart-shell/src/main.ts",
+						"extraWebpackConfig": "projects/freshcart-shell/webpack.config.js",
+						"commonChunk": false
+					},
+					"configurations": {
+						"production": {
+							"budgets": [
+								{
+									"type": "initial",
+									"maximumWarning": "500kB",
+									"maximumError": "1MB"
+								},
+								{
+									"type": "anyComponentStyle",
+									"maximumWarning": "2kB",
+									"maximumError": "4kB"
+								}
+							],
+							"outputHashing": "all",
+							"extraWebpackConfig": "projects/freshcart-shell/webpack.prod.config.js"
+						},
+						"development": {
+							"optimization": false,
+							"extractLicenses": false,
+							"sourceMap": true
+						}
+					},
+					"defaultConfiguration": "production"
+				},
+				"serve": {
+					"builder": "ngx-build-plus:dev-server",
+					"configurations": {
+						"production": {
+							"buildTarget": "freshcart-shell:build:production",
+							"extraWebpackConfig": "projects/freshcart-shell/webpack.prod.config.js"
+						},
+						"development": {
+							"buildTarget": "freshcart-shell:build:development"
+						}
+					},
+					"defaultConfiguration": "development",
+					"options": {
+						"port": 4200,
+						"publicHost": "http://localhost:4200",
+						"extraWebpackConfig": "projects/freshcart-shell/webpack.config.js"
+					}
+				},
+				"extract-i18n": {
+					"builder": "@angular-devkit/build-angular:extract-i18n"
+				},
+				"test": {
+					"builder": "@angular-devkit/build-angular:karma",
+					"options": {
+						"polyfills": [
+							"zone.js",
+							"zone.js/testing"
+						],
+						"tsConfig": "projects/freshcart-shell/tsconfig.spec.json",
+						"inlineStyleLanguage": "scss",
+						"assets": [
+							{
+								"glob": "**/*",
+								"input": "projects/freshcart-shell/public"
+							}
+						],
+						"styles": [
+							"projects/freshcart-shell/src/styles.scss"
+						],
+						"scripts": []
+					}
+				}
+			}
+		},
+		"freshcart-products": {
+			"projectType": "application",
+			"schematics": {
+				"@schematics/angular:component": {
+					"style": "scss"
+				}
+			},
+			"root": "projects/freshcart-products",
+			"sourceRoot": "projects/freshcart-products/src",
+			"prefix": "app",
+			"architect": {
+				"build": {
+					"builder": "ngx-build-plus:browser",
+					"options": {
+						"outputPath": "dist/freshcart-products",
+						"index": "projects/freshcart-products/src/index.html",
+						"polyfills": [
+							"zone.js"
+						],
+						"tsConfig": "projects/freshcart-products/tsconfig.app.json",
+						"inlineStyleLanguage": "scss",
+						"assets": [
+							{
+								"glob": "**/*",
+								"input": "projects/freshcart-products/public",
+								"output": "."
+							}
+						],
+						"styles": [
+							"projects/freshcart-products/src/styles.scss"
+						],
+						"scripts": [],
+						"main": "projects/freshcart-products/src/main.ts",
+						"extraWebpackConfig": "projects/freshcart-products/webpack.config.js",
+						"commonChunk": false
+					},
+					"configurations": {
+						"production": {
+							"budgets": [
+								{
+									"type": "initial",
+									"maximumWarning": "500kB",
+									"maximumError": "1MB"
+								},
+								{
+									"type": "anyComponentStyle",
+									"maximumWarning": "2kB",
+									"maximumError": "4kB"
+								}
+							],
+							"outputHashing": "all",
+							"extraWebpackConfig": "projects/freshcart-products/webpack.prod.config.js"
+						},
+						"development": {
+							"optimization": false,
+							"extractLicenses": false,
+							"sourceMap": true
+						}
+					},
+					"defaultConfiguration": "production"
+				},
+				"serve": {
+					"builder": "ngx-build-plus:dev-server",
+					"configurations": {
+						"production": {
+							"buildTarget": "freshcart-products:build:production",
+							"extraWebpackConfig": "projects/freshcart-products/webpack.prod.config.js"
+						},
+						"development": {
+							"buildTarget": "freshcart-products:build:development"
+						}
+					},
+					"defaultConfiguration": "development",
+					"options": {
+						"port": 4201,
+						"publicHost": "http://localhost:4201",
+						"extraWebpackConfig": "projects/freshcart-products/webpack.config.js"
+					}
+				},
+				"extract-i18n": {
+					"builder": "@angular-devkit/build-angular:extract-i18n"
+				},
+				"test": {
+					"builder": "@angular-devkit/build-angular:karma",
+					"options": {
+						"polyfills": [
+							"zone.js",
+							"zone.js/testing"
+						],
+						"tsConfig": "projects/freshcart-products/tsconfig.spec.json",
+						"inlineStyleLanguage": "scss",
+						"assets": [
+							{
+								"glob": "**/*",
+								"input": "projects/freshcart-products/public"
+							}
+						],
+						"styles": [
+							"projects/freshcart-products/src/styles.scss"
+						],
+						"scripts": []
+					}
+				}
+			}
+		},
+		"freshcart-cart": {
+			"projectType": "application",
+			"schematics": {
+				"@schematics/angular:component": {
+					"style": "scss"
+				}
+			},
+			"root": "projects/freshcart-cart",
+			"sourceRoot": "projects/freshcart-cart/src",
+			"prefix": "app",
+			"architect": {
+				"build": {
+					"builder": "ngx-build-plus:browser",
+					"options": {
+						"outputPath": "dist/freshcart-cart",
+						"index": "projects/freshcart-cart/src/index.html",
+						"polyfills": [
+							"zone.js"
+						],
+						"tsConfig": "projects/freshcart-cart/tsconfig.app.json",
+						"inlineStyleLanguage": "scss",
+						"assets": [
+							{
+								"glob": "**/*",
+								"input": "projects/freshcart-cart/public",
+								"output": "."
+							}
+						],
+						"styles": [
+							"projects/freshcart-cart/src/styles.scss"
+						],
+						"scripts": [],
+						"main": "projects/freshcart-cart/src/main.ts",
+						"extraWebpackConfig": "projects/freshcart-cart/webpack.config.js",
+						"commonChunk": false
+					},
+					"configurations": {
+						"production": {
+							"budgets": [
+								{
+									"type": "initial",
+									"maximumWarning": "500kB",
+									"maximumError": "1MB"
+								},
+								{
+									"type": "anyComponentStyle",
+									"maximumWarning": "2kB",
+									"maximumError": "4kB"
+								}
+							],
+							"outputHashing": "all",
+							"extraWebpackConfig": "projects/freshcart-cart/webpack.prod.config.js"
+						},
+						"development": {
+							"optimization": false,
+							"extractLicenses": false,
+							"sourceMap": true
+						}
+					},
+					"defaultConfiguration": "production"
+				},
+				"serve": {
+					"builder": "ngx-build-plus:dev-server",
+					"configurations": {
+						"production": {
+							"buildTarget": "freshcart-cart:build:production",
+							"extraWebpackConfig": "projects/freshcart-cart/webpack.prod.config.js"
+						},
+						"development": {
+							"buildTarget": "freshcart-cart:build:development"
+						}
+					},
+					"defaultConfiguration": "development",
+					"options": {
+						"port": 4203,
+						"publicHost": "http://localhost:4203",
+						"extraWebpackConfig": "projects/freshcart-cart/webpack.config.js"
+					}
+				},
+				"extract-i18n": {
+					"builder": "@angular-devkit/build-angular:extract-i18n"
+				},
+				"test": {
+					"builder": "@angular-devkit/build-angular:karma",
+					"options": {
+						"polyfills": [
+							"zone.js",
+							"zone.js/testing"
+						],
+						"tsConfig": "projects/freshcart-cart/tsconfig.spec.json",
+						"inlineStyleLanguage": "scss",
+						"assets": [
+							{
+								"glob": "**/*",
+								"input": "projects/freshcart-cart/public"
+							}
+						],
+						"styles": [
+							"projects/freshcart-cart/src/styles.scss"
+						],
+						"scripts": []
+					}
+				}
+			}
+		},
+		"freshcart-auth": {
+			"projectType": "application",
+			"schematics": {
+				"@schematics/angular:component": {
+					"style": "scss"
+				}
+			},
+			"root": "projects/freshcart-auth",
+			"sourceRoot": "projects/freshcart-auth/src",
+			"prefix": "app",
+			"architect": {
+				"build": {
+					"builder": "ngx-build-plus:browser",
+					"options": {
+						"outputPath": "dist/freshcart-auth",
+						"index": "projects/freshcart-auth/src/index.html",
+						"polyfills": [
+							"zone.js"
+						],
+						"tsConfig": "projects/freshcart-auth/tsconfig.app.json",
+						"inlineStyleLanguage": "scss",
+						"assets": [
+							{
+								"glob": "**/*",
+								"input": "projects/freshcart-auth/public",
+								"output": "."
+							}
+						],
+						"styles": [
+							"projects/freshcart-auth/src/styles.scss"
+						],
+						"scripts": [],
+						"main": "projects/freshcart-auth/src/main.ts",
+						"extraWebpackConfig": "projects/freshcart-auth/webpack.config.js",
+						"commonChunk": false
+					},
+					"configurations": {
+						"production": {
+							"budgets": [
+								{
+									"type": "initial",
+									"maximumWarning": "500kB",
+									"maximumError": "1MB"
+								},
+								{
+									"type": "anyComponentStyle",
+									"maximumWarning": "2kB",
+									"maximumError": "4kB"
+								}
+							],
+							"outputHashing": "all",
+							"extraWebpackConfig": "projects/freshcart-auth/webpack.prod.config.js"
+						},
+						"development": {
+							"optimization": false,
+							"extractLicenses": false,
+							"sourceMap": true
+						}
+					},
+					"defaultConfiguration": "production"
+				},
+				"serve": {
+					"builder": "ngx-build-plus:dev-server",
+					"configurations": {
+						"production": {
+							"buildTarget": "freshcart-auth:build:production",
+							"extraWebpackConfig": "projects/freshcart-auth/webpack.prod.config.js"
+						},
+						"development": {
+							"buildTarget": "freshcart-auth:build:development"
+						}
+					},
+					"defaultConfiguration": "development",
+					"options": {
+						"port": 4202,
+						"publicHost": "http://localhost:4202",
+						"extraWebpackConfig": "projects/freshcart-auth/webpack.config.js"
+					}
+				},
+				"extract-i18n": {
+					"builder": "@angular-devkit/build-angular:extract-i18n"
+				},
+				"test": {
+					"builder": "@angular-devkit/build-angular:karma",
+					"options": {
+						"polyfills": [
+							"zone.js",
+							"zone.js/testing"
+						],
+						"tsConfig": "projects/freshcart-auth/tsconfig.spec.json",
+						"inlineStyleLanguage": "scss",
+						"assets": [
+							{
+								"glob": "**/*",
+								"input": "projects/freshcart-auth/public"
+							}
+						],
+						"styles": [
+							"projects/freshcart-auth/src/styles.scss"
+						],
+						"scripts": []
+					}
+				}
+			}
+		},
+		"shared": {
+			"projectType": "library",
+			"root": "projects/shared",
+			"sourceRoot": "projects/shared/src",
+			"prefix": "lib",
+			"architect": {
+				"build": {
+					"builder": "@angular-devkit/build-angular:ng-packagr",
+					"options": {
+						"project": "projects/shared/ng-package.json"
+					},
+					"configurations": {
+						"production": {
+							"tsConfig": "projects/shared/tsconfig.lib.prod.json"
+						},
+						"development": {
+							"tsConfig": "projects/shared/tsconfig.lib.json"
+						}
+					},
+					"defaultConfiguration": "production"
+				},
+				"test": {
+					"builder": "@angular-devkit/build-angular:karma",
+					"options": {
+						"tsConfig": "projects/shared/tsconfig.spec.json",
+						"polyfills": [
+							"zone.js",
+							"zone.js/testing"
+						]
+					}
+				}
+			}
+		}
+	}
 }
