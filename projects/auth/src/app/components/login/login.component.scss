@@ -1,0 +1,128 @@
+@use '../../../../../shell/src/styles.scss' as *;
+
+.login-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+:host{
+  min-height: auto;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 50%;
+  background-color: $light-color;
+  border-radius: 10px;
+  padding: 32px;
+  box-shadow: $shadow;
+  border: 1px solid rgba(135, 135, 135, 0.25);
+  animation: fadeIn 0.5s ease;
+
+  h2 {
+    text-align: center;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+
+  img {
+    width: 100px;
+    display: block;
+    margin: 8px auto 0;
+  }
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 25px;
+}
+
+.form-group {
+  margin-bottom: 18px;
+
+  label {
+    font-weight: 600;
+    margin-bottom: 5px;
+    display: block;
+  }
+
+  .form-control {
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    background-color: white;
+    transition: $main-transition;
+
+    &:focus {
+      border-color: $main-color;
+      box-shadow: 0 0 0 0.25rem rgba(135, 135, 135, 0.35) !important;
+      outline: none;
+    }
+  }
+}
+
+.error {
+  color: #c91c1c;
+  padding-left: 4px;
+  padding-top: 4px;
+  font-size: 12px;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .btn-primary {
+    @extend .main-btn;
+    padding: 7px 18px !important;
+    font-weight: 600;
+    i {
+      margin-left: 5px;
+    }
+  }
+
+  .forgot {
+    color: $main-color;
+    font-size: 17px;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline !important;
+    }
+  }
+}
+
+.server-error {
+  margin-top: 14px;
+  padding: 10px;
+  text-align: center;
+  background-color: #ffdddd;
+  color: #a30000;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Media Query for small screens
+@media (max-width: 670px) {
+  .login-card {
+    max-width: 100%; // remove max-width
+    padding: 24px;
+    border-radius: 8px;
+  }
+}

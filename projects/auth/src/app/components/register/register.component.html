@@ -1,0 +1,110 @@
+<section class="register-wrapper">
+  <div class="register-card">
+    <div class="logo-wrapper d-flex align-items-center justify-content-center">
+      <h2>Register Now</h2>
+      <img src="./assets/javazone.svg" alt="javazone" />
+    </div>
+    <form [formGroup]="registerForm" (ngSubmit)="registerHandel(registerForm)">
+      <div class="row">
+        <!-- Name -->
+        <div class="form-group col-md-6">
+          <label for="name">Name</label>
+          <input
+            formControlName="name"
+            type="text"
+            placeholder="Write your name..."
+            class="form-control"
+            id="name"
+          />
+          <div class="error" *ngIf="registerForm.get('name')?.errors && registerForm.get('name')?.touched">
+            <p *ngIf="registerForm.get('name')?.getError('required')">Name is required</p>
+            <p *ngIf="registerForm.get('name')?.getError('minlength')">Name minLength 3</p>
+          </div>
+        </div>
+        <!-- Email -->
+        <div class="form-group col-md-6">
+          <label for="email">Email</label>
+          <input
+            formControlName="email"
+            type="email"
+            placeholder="Write your email..."
+            class="form-control"
+            id="email"
+          />
+          <div class="error" *ngIf="registerForm.get('email')?.errors && registerForm.get('email')?.touched">
+            <p *ngIf="registerForm.get('email')?.getError('required')">Email is required</p>
+            <p *ngIf="registerForm.get('email')?.getError('email')">Invalid Email</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <!-- Password -->
+        <div class="form-group col-md-6">
+          <label for="password">Password</label>
+          <input
+            formControlName="password"
+            type="password"
+            placeholder="Write your password..."
+            class="form-control"
+            id="password"
+          />
+          <div class="error" *ngIf="registerForm.get('password')?.errors && registerForm.get('password')?.touched">
+            <p *ngIf="registerForm.get('password')?.getError('required')">Password is required</p>
+            <p *ngIf="registerForm.get('password')?.getError('pattern')">
+              Password must start with an uppercase letter followed by 5 to 8 lowercase letters or numbers.
+            </p>
+          </div>
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="form-group col-md-6">
+          <label for="rePassword">Confirm Password</label>
+          <input
+            formControlName="rePassword"
+            type="password"
+            placeholder="Write your confirm password..."
+            class="form-control"
+            id="rePassword"
+          />
+          <div class="error" *ngIf="registerForm.get('rePassword')?.errors && registerForm.get('rePassword')?.touched">
+            <p *ngIf="registerForm.get('rePassword')?.getError('required')">Confirm is required</p>
+            <p *ngIf="registerForm.get('rePassword')?.getError('mismatch')">Passwords don't match</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <!-- Phone -->
+        <div class="form-group col-md-6">
+          <label for="phone">Phone Number</label>
+          <input
+            type="tel"
+            formControlName="phone"
+            placeholder="Write your phone..."
+            class="form-control"
+            id="phone"
+          />
+          <div class="error" *ngIf="registerForm.get('phone')?.errors && registerForm.get('phone')?.touched">
+            <p *ngIf="registerForm.get('phone')?.getError('required')">Phone is required</p>
+            <p *ngIf="registerForm.get('phone')?.getError('pattern')">
+              Invalid Egyptian phone number. Must be in the format 01XXXXXXXXX.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="actions">
+        <button [disabled]="registerForm.invalid" type="submit" class="btn-primary">
+          SignUp
+          <span *ngIf="isLoading"><i class="fas fa-spin fa-spinner"></i></span>
+        </button>
+         <a routerLink="./auth" class="login">
+            Login ?
+          </a>
+      </div>
+    </form>
+
+    <!-- Server Error -->
+    <p class="server-error" *ngIf="errMsg != ''">{{errMsg}}</p>
+  </div>
+</section>

@@ -1,48 +1,76 @@
 {
-  "name": "fresh-cart",
+  "name": "javazone-workspace",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve shell",
+    "start:products": "ng serve products",
+    "start:cart": "ng serve cart",
+    "start:auth": "ng serve auth",
+    "run:all": "node run-all.js",
     "build": "ng build",
-    "watch": "ng build --watch --configuration development",
+    "build:shell": "ng build shell --configuration production",
+    "build:products": "ng build products --configuration production",
+    "build:cart": "ng build cart --configuration production",
+    "build:auth": "ng build auth --configuration production",
     "test": "ng test"
+  },
+  "prettier": {
+    "printWidth": 100,
+    "singleQuote": true,
+    "overrides": [
+      {
+        "files": "*.html",
+        "options": {
+          "parser": "angular"
+        }
+      }
+    ]
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^18.0.2",
-    "@angular/common": "^18.0.0",
-    "@angular/compiler": "^18.0.0",
-    "@angular/core": "^18.0.0",
-    "@angular/forms": "^18.0.0",
-    "@angular/material": "^18.0.3",
-    "@angular/platform-browser": "^18.0.0",
-    "@angular/platform-browser-dynamic": "^18.0.0",
-    "@angular/router": "^18.0.0",
+    "@angular-architects/native-federation": "^20.0.0",
+    "@angular/animations": "^20.3.13",
+    "@angular/cdk": "^20.2.14",
+    "@angular/common": "^20.3.0",
+    "@angular/compiler": "^20.3.0",
+    "@angular/core": "^20.3.0",
+    "@angular/forms": "^20.3.0",
+    "@angular/material": "^20.2.14",
+    "@angular/platform-browser": "^20.3.0",
+    "@angular/router": "^20.3.0",
     "@fortawesome/fontawesome-free": "^6.5.2",
-    "@material/dialog": "^14.0.0",
-    "@ng-bootstrap/ng-bootstrap": "^17.0.0",
+    "@ng-bootstrap/ng-bootstrap": "^19.0.1",
+    "@softarc/native-federation-node": "^2.0.10",
+    "@softarc/native-federation-runtime": "^3.3.6",
     "bootstrap": "^5.3.3",
+    "es-module-shims": "^1.5.12",
     "jwt-decode": "^4.0.0",
-    "ngx-owl-carousel-o": "^18.0.0",
+    "ngx-owl-carousel-o": "^20.0.1",
     "ngx-pagination": "^6.0.3",
     "ngx-spinner": "^17.0.0",
     "ngx-toastr": "^19.0.0",
     "rxjs": "~7.8.0",
+    "swiper": "^12.0.3",
     "tslib": "^2.3.0",
-    "zone.js": "~0.14.3"
+    "zone.js": "~0.15.0"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^18.0.1",
-    "@angular/cli": "^18.0.1",
-    "@angular/compiler-cli": "^18.0.0",
+    "@angular-devkit/build-angular": "^20.3.10",
+    "@angular/build": "^20.3.10",
+    "@angular/cli": "^20.3.10",
+    "@angular/compiler-cli": "^20.3.0",
     "@types/jasmine": "~5.1.0",
-    "jasmine-core": "~5.1.0",
+    "jasmine-core": "~5.9.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
-    "typescript": "~5.4.2"
+    "ng-packagr": "^20.3.0",
+    "typescript": "~5.9.2",
+    "webpack": "^5.102.1",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.2"
   }
 }

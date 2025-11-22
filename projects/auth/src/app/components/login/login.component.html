@@ -1,0 +1,74 @@
+<section class="login-wrapper">
+  <div class="login-card">
+    <div class="header">
+      <h2>Welcome to !</h2>
+      <img src="./assets/javazone.svg" alt="javazone" />
+    </div>
+
+    <p class="subtitle">
+      Type your e-mail and password to log in or create an account.
+    </p>
+
+    <form [formGroup]="loginForm" (ngSubmit)="loginHandel(loginForm, btnLogin)">
+
+      <!-- Email -->
+      <div class="form-group">
+        <label>Email</label>
+        <input
+          type="email"
+          formControlName="email"
+          placeholder="Write your email..."
+          class="form-control" />
+
+        <div class="error" *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.errors">
+          <span *ngIf="loginForm.get('email')?.errors?.['required']">Email is required</span>
+          <span *ngIf="loginForm.get('email')?.errors?.['email']">Invalid Email</span>
+        </div>
+      </div>
+
+      <!-- Password -->
+      <div class="form-group">
+        <label>Password</label>
+        <input
+          type="password"
+          formControlName="password"
+          placeholder="Write your password..."
+          class="form-control" />
+
+        <div class="error" *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.errors">
+          <span *ngIf="loginForm.get('password')?.errors?.['required']">Password is required</span>
+          <span *ngIf="loginForm.get('password')?.errors?.['pattern']">
+            Password must start with an uppercase letter followed by 5-8 lowercase letters or numbers.
+          </span>
+        </div>
+      </div>
+
+      <!-- Buttons -->
+      <div class="actions">
+        <button
+          #btnLogin
+          type="submit"
+          [disabled]="loginForm.invalid || isLoading"
+          class="btn-primary">
+          Login
+          <i *ngIf="isLoading" class="fas fa-spinner fa-spin"></i>
+        </button>
+
+        <div class="d-flex flex-column gap-3">
+          <a routerLink="/auth/register" class="forgot">
+            Create Account?
+          </a>
+          <a class="forgot" (click)="openForgotPassword()">
+            Forget Password?
+          </a>
+        </div>
+      </div>
+    </form>
+
+    <p class="server-error" *ngIf="errMsg">{{ errMsg }}</p>
+  </div>
+</section>
+<app-forgotpassword
+  *ngIf="showForgotPassword"
+  (close)="closeForgotPassword()">
+</app-forgotpassword>
