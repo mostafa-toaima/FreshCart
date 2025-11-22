@@ -17,7 +17,7 @@
 
 .dropdown-toggle {
   background-color: transparent;
-  border: 1px solid #0aad0a;
+  border: 1px solid #35ACA0;
   border-radius: 50%;
   width: 40px;
   height: 40px;
@@ -32,7 +32,7 @@
   margin-left: 0;
   vertical-align: 0;
   content: "";
-  border-top: 0.5em solid #0aad0a;
+  border-top: 0.5em solid #35ACA0;
   border-right: 0.5em solid transparent;
   border-left: 0.5em solid transparent;
   position: absolute;
@@ -59,4 +59,18 @@
 
 .dropdown-menu[data-bs-popper] {
   left: -124% !important;
+}
+
+@media (min-width: 992px){
+  .navbarLinksDesign {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+  }
+  .navbarActionsDesign{
+    display: flex;
+    flex-direction: row;
+    padding: 30px;
+  }
 }

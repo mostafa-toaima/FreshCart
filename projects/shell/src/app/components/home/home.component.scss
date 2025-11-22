@@ -1,0 +1,13 @@
+.main-slider{
+  background-color: #efefef;
+}
+
+main {
+  padding-block: 110px 30px !important;
+  margin-block: auto;
+}
+
+::ng-deep .owl-carousel .owl-item img {
+  border-radius: 10px;
+}
+

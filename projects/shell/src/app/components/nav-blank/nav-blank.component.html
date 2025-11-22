@@ -4,7 +4,7 @@
 >
   <div class="container-fluid">
     <a class="navbar-brand" routerLink="/">
-      <img src="./assets/javazone.svg" alt="javazone" width="80" />
+      <img src="./assets/javazone5.svg" alt="javazone" width="80" />
     </a>
     <button
       class="navbar-toggler d-lg-none"
@@ -18,7 +18,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="collapsibleNavId">
-      <ul class="navbar-nav me-auto mt-2 mt-lg-0 d-flex align-items-center justify-content-evenly w-100">
+      <ul class="navbar-nav me-auto mt-2 mt-lg-0 navbarLinksDesign">
         <li class="nav-item">
           <a class="nav-link" routerLinkActive="active-link" routerLink="/home"
             >Home</a
@@ -53,7 +53,7 @@
         </li>
       </ul>
 
-      <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+      <ul class="navbar-nav ms-auto mt-2 mt-lg-0 navbarActionsDesign">
         <li class="nav-item me-4 hstack">
           <a routerLink="/wishlist" class="text-main number-item">
             <i class="fas fa-heart text-danger fa-2x"></i>
@@ -69,7 +69,7 @@
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-              <i class="fas fa-user text-success"></i>
+              <i class="fas fa-user text-featured"></i>
             </button>
             <ul class="dropdown-menu">
               <li>
@@ -93,7 +93,7 @@
         </li>
 
         <li class="nav-item me-4 hstack">
-          <a routerLink="/cart" class="text-main number-item">
+          <a routerLink="/cart" class="text-featured number-item">
             <i class="fas fa-cart-shopping fa-xl"></i>
             <span *ngIf="cartNumOfItems"> {{ cartNumOfItems }} </span>
           </a>

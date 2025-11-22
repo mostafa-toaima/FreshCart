@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Encode+Sans+Expanded:wght@300&display=swap");
 
-$main-color: #59ab6e;
 $secondary-color: #878787;
+$main-color: #35ACA0;
 $light-color: #f0f3f2;
 $shadow: rgba(145, 158, 171, 0.2) 0px 2px 4px -1px,
   rgba(145, 158, 171, 0.14) 0px 4px 5px 0px,
@@ -9,6 +9,7 @@ $shadow: rgba(145, 158, 171, 0.2) 0px 2px 4px -1px,
 $font-family: "Encode Sans Expanded",sans-serif;
 $rating-color: #ffc908;
 $main-transition: 0.8s;
+
 
 
 ::-webkit-scrollbar {
@@ -77,6 +78,10 @@ a:hover {
 }
 
 .text-main {
+  color: $secondary-color !important;
+}
+
+.text-featured {
   color: $main-color !important;
 }
 

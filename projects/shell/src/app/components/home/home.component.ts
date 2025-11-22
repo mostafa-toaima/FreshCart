@@ -174,6 +174,7 @@ export class HomeComponent implements OnInit {
     navSpeed: 700,
     navText: ['', ''],
     autoplay: true,
+    margin: 10,
     autoplayTimeout: 5000,
     autoplaySpeed: 1000,
     responsive: {
@@ -187,7 +188,7 @@ export class HomeComponent implements OnInit {
         items: 4,
       },
       940: {
-        items: 6,
+        items: 4,
       },
     },
     nav: false,
