@@ -22,18 +22,13 @@ export const routes: Routes = [
       {
         path: 'products',
         loadChildren: () =>
-          loadRemoteModule('products', './routes').then(m => m.routes)
+          loadRemoteModule('products', './products-routes').then(m => m.routes)
       },
-      // {
-      //   path: 'brands',
-      //   loadComponent: () =>
-      //     import('./components/brands/brands.component').then(m => m.BrandsComponent)
-      // },
-      // {
-      //   path: 'categories',
-      //   loadComponent: () =>
-      //     import('./components/categories/categories.component').then(m => m.CategoriesComponent)
-      // }
+      {
+        path: 'categories',
+        loadChildren: () =>
+          loadRemoteModule('products', './categories-routes').then(m => m.routes)
+      },
     ]
   },
 
@@ -58,5 +53,9 @@ export const routes: Routes = [
   // --------------------------
   // NOT FOUND
   // --------------------------
-  { path: '**', redirectTo: '' }
+  {
+    path: '**',
+    loadComponent: () =>
+      import('./components/notfound/notfound.component').then(m => m.NotfoundComponent)
+  }
 ];

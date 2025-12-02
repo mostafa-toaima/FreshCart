@@ -1,0 +1,27 @@
+<section class="categories-page container my-5">
+
+  <h2 class="text-center mb-4 fw-bold">Shop by Category</h2>
+
+  <div class="row g-4 justify-content-center">
+
+    <div
+      class="col-6 col-sm-6 col-md-4 col-lg-3"
+      *ngFor="let category of categoriesData"
+    >
+      <div
+        class="category-card shadow-sm"
+        [routerLink]="['/categories/details', category._id]"
+        role="button"
+      >
+        <div class="image-wrapper">
+          <img [src]="category.image" [alt]="category.name" />
+        </div>
+
+        <div class="overlay">
+          <h3>{{ category.name }}</h3>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

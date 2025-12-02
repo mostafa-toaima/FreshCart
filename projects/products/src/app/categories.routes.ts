@@ -7,24 +7,6 @@ import { CategoriesMainComponent } from './categories/categories-main.component'
 export const routes: Routes = [
   {
     path: '',
-    component: ProductsMainComponent,
-    children: [
-      {
-        path: '',
-        loadComponent: () =>
-          import('./products/components/all-products/products.component')
-            .then(c => c.ProductsComponent)
-      },
-      {
-        path: 'productdetails/:id',
-        loadComponent: () =>
-          import('./products/components/product-details/product-details.component')
-            .then(c => c.ProductDetailsComponent)
-      },
-    ]
-  },
-  {
-    path: 'categories',
     component: CategoriesMainComponent,
     children: [
       {
