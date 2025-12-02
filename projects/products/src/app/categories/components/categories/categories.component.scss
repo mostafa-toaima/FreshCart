@@ -1,63 +1,52 @@
-.categories-page {
-  h2 {
-    font-size: 2rem;
-    color: #222;
+.categories-section {
+  padding: 20px 0;
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 24px;
+  justify-items: center;
+}
+
+.category-card {
+  width: 100%;
+  max-width: 220px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #fff;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+
+  &:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
   }
 
-  .category-card {
-    position: relative;
+  .image-wrapper {
+    height: 180px;
     overflow: hidden;
-    border-radius: 18px;
-    cursor: pointer;
-    transition: transform .3s ease, box-shadow .3s ease;
+    border-bottom: 1px solid #eee;
 
-    &:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
-
-      .overlay {
-        opacity: 1;
-      }
-
-      img {
-        transform: scale(1.12);
-      }
-    }
-
-    .image-wrapper {
+    img {
       width: 100%;
-      height: 270px;
-      border-radius: 18px;
-      overflow: hidden;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
 
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform .5s ease;
+      &:hover {
+        transform: scale(1.1);
       }
     }
+  }
 
-    .overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg,
-          rgba(0, 0, 0, 0) 30%,
-          rgba(0, 0, 0, 0.6) 100%);
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      padding-bottom: 18px;
-      opacity: 0;
-      transition: opacity .35s ease;
-
-      h3 {
-        color: white;
-        font-size: 1.2rem;
-        font-weight: 700;
-        margin: 0;
-        text-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
-      }
-    }
+  .category-name {
+    text-align: center;
+    padding: 12px 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #444;
   }
 }
