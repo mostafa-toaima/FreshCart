@@ -1,6 +1,8 @@
-// import { WishlistService } from './../../Core/Services/wishlist.service';
-// import { CartService } from './../../Core/Services/cart.service';
 import { CommonModule } from '@angular/common';
+
+import { WishlistService } from '../../../../../common/src/lib/Services/wishlist.service';
+import { CartService } from '../../../../../common/src/lib/Services/cart.service';
+
 import {
   Component,
   ElementRef,
@@ -26,9 +28,9 @@ import {
 export class NavBlankComponent implements OnInit {
   constructor(
     private _Router: Router,
-    // private _CartService: CartService,
+    private _CartService: CartService,
     private _Renderer2: Renderer2,
-    // private _WishlistService: WishlistService
+    private _WishlistService: WishlistService
   ) {}
 
   @ViewChild('navBar', { static: false }) navElement!: ElementRef;
@@ -50,31 +52,30 @@ export class NavBlankComponent implements OnInit {
   whishItemNumber: number = 0;
 
   ngOnInit(): void {
-    // this._CartService.cartNumber.subscribe({
-    //   next: (data) => {
-    //     this.cartNumOfItems = data;
-    //   },
-    // });
+    this._CartService.cartNumber.subscribe({
+      next: (data) => {
+        this.cartNumOfItems = data;
+      },
+    });
 
-    // this._CartService.getUserCart().subscribe({
-    //   next: (response) => {
-    //     this.cartNumOfItems = response.numOfCartItems;
-    //   },
-    // });
+    this._CartService.getUserCart().subscribe({
+      next: (response) => {
+        this.cartNumOfItems = response.numOfCartItems;
+      },
+    });
 
-    // //wishList
-    // this._WishlistService.whishItemNumber.subscribe({
-    //   next: (dataNum) => {
-    //     this.whishItemNumber = dataNum;
-    //   }
-    // })
-    // this._WishlistService.getLoggedUserWishlist().subscribe({
-    //   next: (dataNum) => {
-    //     this.whishItemNumber = dataNum.count;
-    //     console.log(this.whishItemNumber);
-
-    //   }
-    // })
+    //wishList
+    this._WishlistService.whishItemNumber.subscribe({
+      next: (dataNum) => {
+        this.whishItemNumber = dataNum;
+      }
+    })
+    this._WishlistService.getLoggedUserWishlist().subscribe({
+      next: (dataNum) => {
+        this.whishItemNumber = dataNum.count;
+        console.log(this.whishItemNumber);
+      }
+    })
 
   }
 

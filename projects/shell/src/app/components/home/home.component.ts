@@ -23,6 +23,7 @@ import { CartService } from '../../../../../common/src/lib/Services/cart.service
   standalone: true,
   imports: [
     CommonModule,
+    FormsModule,
     CutTextPipe,
     RandomSlicePipe,
     CarouselModule,
