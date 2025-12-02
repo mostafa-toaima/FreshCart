@@ -32,7 +32,7 @@ import { CartService } from '../../../../../common/src/lib/Services/cart.service
     NgbModule,
   ],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss',
+  styleUrls: ['./home.component.scss'],
 })
 
 export class HomeComponent implements OnInit {
@@ -188,7 +188,7 @@ export class HomeComponent implements OnInit {
         items: 4,
       },
       940: {
-        items: 4,
+        items: 5,
       },
     },
     nav: false,

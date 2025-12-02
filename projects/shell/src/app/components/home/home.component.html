@@ -88,7 +88,7 @@
   class="py-4 my-4"
   *ngIf="categories.length > 0"
 >
-  <h2 class="text-center h1 m-3">Categories of The Month</h2>
+  <h2 class="text-center h1 m-3">Popular Categories</h2>
   <p class="text-center m-3 text-main fs-6">Excepteur sint occaecat cupidatat non proident,sunt in culpa qui officia deserunt <br> mollit anim id est laborum.</p>
 
   <owl-carousel-o [options]="categoryOptions">
@@ -107,77 +107,67 @@
 </section>
 
 <!-- Products-->
-<section class="py-4" *ngIf="products.length > 0">
-  <h2 class="text-center h1 m-3">Popular Products</h2>
-  <h4 class="text-center m-3 text-main fs-6">Search Here:</h4>
-  <input
-    [(ngModel)]="term"
-    type="search"
-    class="form-control w-50 mx-auto mb-5 mt-2"
-    placeholder="Search Here.."
-  />
+<!-- Products Redesigned -->
+<section class="py-5" *ngIf="products.length > 0">
+  <h2 class="text-center h1 fw-bold mb-4">Popular Products</h2>
+
+  <div class="search-wrapper text-center mb-4">
+    <input
+      [(ngModel)]="term"
+      type="search"
+      class="form-control search-input mx-auto"
+      placeholder="Search for a product..."
+    />
+  </div>
+
   <div class="row g-4">
     <div
       class="col-sm-6 col-md-4 col-lg-3 col-xl-2"
       *ngFor="let item of products | search : term | randomSlice"
     >
-      <div class="product h-100">
-        <i
-          *ngIf="!wishListData.includes(item._id)"
-          (click)="addFav(item._id)"
-          class="fa-regular text-danger fa-heart heart"
-        ></i>
-        <i
-          *ngIf="wishListData.includes(item._id)"
-          (click)="removeFav(item._id)"
-          class="fa-solid text-danger fa-heart heart"
-        ></i>
+      <div class="product-card">
+        <!-- Fav Icon -->
+        <div class="fav-icon" (click)="wishListData.includes(item._id) ? removeFav(item._id) : addFav(item._id)">
+          <i
+            class="fa-heart"
+            [class.fa-solid]="wishListData.includes(item._id)"
+            [class.fa-regular]="!wishListData.includes(item._id)"
+          ></i>
+        </div>
 
-        <header role="button" [routerLink]="['/productdetails', item._id]">
-          <img
-            class="w-100"
-            [src]="item?.imageCover"
-            [title]="item?.title"
-            [alt]="item?.title"
-          />
-          <h3 class="h6 pt-2">
-            {{ item.title | cutText : 2 | uppercase }}
-          </h3>
-          <h4 class="h6 text-main">{{ item?.category?.name }}</h4>
-          <div class="d-flex align-items-center justify-content-between small">
-            <span>
-              {{ item.price | currency : "EGP " }}
-            </span>
-            <p class="mb-0">
-              <!-- rating Color
+        <!-- Product Image -->
+        <div class="img-wrapper" [routerLink]="['/productdetails', item._id]">
+          <img [src]="item.imageCover" [alt]="item.title" />
+        </div>
 
-              <ngb-rating
-                [rate]="product.ratingsAverage"
-                [readonly]="true"
-                [max]="5">
-              </ngb-rating
-                        but we need to import ngbModule
-              -->
+        <!-- Content -->
+        <div class="details">
+          <h3 class="title">{{ item.title | cutText : 2 }}</h3>
+          <p class="category">{{ item?.category?.name }}</p>
 
+          <div class="price-rating">
+            <span class="price">{{ item.price | currency : "EGP " }}</span>
+
+            <div class="rating">
               <i
-                [class.rating-color]="item.ratingsAverage >= num"
-                *ngFor="let num of [1, 2, 3, 4, 5]"
-                class="fas fa-star font-sm"
+                *ngFor="let num of [1,2,3,4,5]"
+                class="fas fa-star"
+                [class.active]="item.ratingsAverage >= num"
               ></i>
-              <span class="text-muted">{{ item.ratingsAverage }}</span>
-            </p>
+              <span class="rate-number">{{ item.ratingsAverage }}</span>
+            </div>
           </div>
-        </header>
-        <footer>
-          <button
-            (click)="addToCart(item._id, btnAdd)"
-            #btnAdd
-            class="btn main-btn w-100 my-2"
-          >
-            + Add To Cart
-            <i *ngIf="btnAdd.disabled" class="fas fa-spin fa-spinner"></i>
-          </button>
-        </footer>
+        </div>
+
+        <!-- Add To Cart -->
+        <button
+          (click)="addToCart(item._id, btnAdd)"
+          #btnAdd
+          class="btn main-btn w-100 add-btn"
+        >
+          Add To Cart
+          <i *ngIf="btnAdd.disabled" class="fas fa-spin fa-spinner ms-2"></i>
+        </button>
       </div>
     </div>
   </div>

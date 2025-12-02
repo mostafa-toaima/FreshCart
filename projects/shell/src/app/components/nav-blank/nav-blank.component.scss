@@ -68,9 +68,12 @@
     justify-content: space-evenly;
     width: 100%;
   }
-  .navbarActionsDesign{
-    display: flex;
-    flex-direction: row;
-    padding: 30px;
+}
+
+@media (max-width: 992px){
+  .navbarActionsDesign {
+      display: flex;
+      flex-direction: row;
+      padding: 0px;
   }
 }
