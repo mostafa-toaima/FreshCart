@@ -1,0 +1,30 @@
+@use '../../../../../../shell/src/styles.scss' as *;
+
+.product-details {
+  .product-gallery .main-img {
+    border-radius: 10px;
+    max-height: 380px;
+    object-fit: cover;
+  }
+
+  .product-info {
+    h2 {
+      font-size: 1.6rem;
+      line-height: 1.4;
+    }
+
+    .badge {
+      font-size: 0.85rem;
+    }
+
+    .rating-color {
+      font-size: 18px;
+    }
+  }
+
+  ul li::before {
+    content: "• ";
+    color: $main-color;
+    font-size: 18px;
+  }
+}

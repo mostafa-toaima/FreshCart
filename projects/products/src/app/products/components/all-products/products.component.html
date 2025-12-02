@@ -25,7 +25,7 @@
           (click)="removeFav(item._id)"
           class="fa-solid text-danger fa-heart heart"
         ></i>
-        <header>
+        <header role="button" [routerLink]="['/products/productdetails', item._id]">
           <img
             class="w-100"
             [src]="item?.imageCover"

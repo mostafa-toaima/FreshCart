@@ -1,0 +1,51 @@
+  <div class="row g-4">
+    <div
+      class="col-sm-6 col-md-4 col-lg-3 col-xl-2"
+      *ngFor="let item of products | releatedProductsSlice"
+    >
+      <div class="product-card">
+        <!-- Fav Icon -->
+        <div class="fav-icon" (click)="wishListData.includes(item._id) ? removeFav(item._id) : addFav(item._id)">
+          <i
+            class="fa-heart"
+            [class.fa-solid]="wishListData.includes(item._id)"
+            [class.fa-regular]="!wishListData.includes(item._id)"
+          ></i>
+        </div>
+
+        <!-- Product Image -->
+        <div class="img-wrapper" [routerLink]="['/productdetails', item._id]">
+          <img [src]="item.imageCover" [alt]="item.title" />
+        </div>
+
+        <!-- Content -->
+        <div class="details">
+          <h3 class="title">{{ item.title | cutText : 2 }}</h3>
+          <p class="category">{{ item?.category?.name }}</p>
+
+          <div class="price-rating">
+            <span class="price">{{ item.price | currency : "EGP " }}</span>
+
+            <div class="rating">
+              <i
+                *ngFor="let num of [1,2,3,4,5]"
+                class="fas fa-star"
+                [class.active]="item.ratingsAverage >= num"
+              ></i>
+              <span class="rate-number">{{ item.ratingsAverage }}</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Add To Cart -->
+        <button
+          (click)="addToCart(item._id, btnAdd)"
+          #btnAdd
+          class="btn main-btn w-100 add-btn"
+        >
+          Add To Cart
+          <i *ngIf="btnAdd.disabled" class="fas fa-spin fa-spinner ms-2"></i>
+        </button>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,70 @@
+<section class="product-details container py-5">
+
+  <div class="row g-4">
+
+    <div class="col-lg-5">
+      <div class="product-gallery shadow-sm rounded bg-white p-3">
+        <owl-carousel-o [options]="productDetailsOptions">
+          <ng-container *ngFor="let path of productDetails?.images">
+            <ng-template carouselSlide>
+              <img class="img-fluid rounded main-img" [src]="path" />
+            </ng-template>
+          </ng-container>
+        </owl-carousel-o>
+
+      </div>
+    </div>
+
+    <div class="col-lg-7">
+      <div class="product-info bg-white shadow-sm rounded p-4">
+        <span class="badge bg-main-light text-main mb-2 px-3 py-2 fw-bold">
+          {{ productDetails?.category?.name }}
+        </span>
+        <h2 class="fw-bold mb-2">{{ productDetails?.title }}</h2>
+        <p class="text-muted small">{{ productDetails?.description }}</p>
+        <div class="d-flex align-items-center justify-content-between my-3">
+          <span class="h4 fw-bold text-featured">
+            {{ productDetails?.price | currency : 'EGP ' }}
+          </span>
+          <div>
+            <i class="fas fa-star rating-color"></i>
+            <span class="fw-bold ms-1">{{ productDetails?.ratingsAverage }}</span>
+          </div>
+        </div>
+        <div class="mb-3">
+          <span class="badge bg-success px-3 py-2">In Stock</span>
+        </div>
+        <div class="d-flex gap-3 mt-4">
+          <button
+            (click)="addToCart(productDetails._id, btnAdd)"
+            #btnAdd
+            class="btn main-btn flex-grow-1 py-2 fs-6"
+          >
+            <i class="fas fa-cart-plus me-1"></i> Add to Cart
+            <i *ngIf="btnAdd.disabled" class="fas fa-spin fa-spinner"></i>
+          </button>
+          <button
+            routerLink="/home"
+            class="btn btn-outline-danger px-4 py-2 fw-bold"
+          >
+            Back
+          </button>
+        </div>
+         <div class="highlights mt-5 border-top pt-3">
+          <h5>Highlights</h5>
+          <ul class="list-unstyled mt-3">
+            <li><i class="fas fa-check-circle text-success me-2"></i>Premium quality product</li>
+            <li><i class="fas fa-truck-fast text-info me-2"></i>Fast delivery across Egypt</li>
+            <li><i class="fas fa-lock text-secondary me-2"></i>Secure payment</li>
+            <li><i class="fas fa-thumbs-up text-warning me-2"></i>Trusted seller</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+<section class="py-5" *ngIf="products.length > 0">
+  <h2 class="text-center h1 fw-bold mb-4">Releated Products</h2>
+  <javazone-releated-products [products]="products"></javazone-releated-products>
+</section>
