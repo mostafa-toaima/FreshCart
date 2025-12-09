@@ -81,6 +81,6 @@ export class NavBlankComponent implements OnInit {
 
   logOut() {
     localStorage.removeItem('token');
-    this._Router.navigate(['/login']);
+    this._Router.navigate(['/auth/login']);
   }
 }

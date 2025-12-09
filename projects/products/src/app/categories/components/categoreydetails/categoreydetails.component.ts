@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { Categories } from '../../../../../../common/src/lib/interfaces/categories';
 
@@ -16,7 +16,8 @@ import { CategoriesService } from '../../services/categories.service';
 export class CategoreydetailsComponent implements OnInit {
   constructor(
     private _ActivatedRoute: ActivatedRoute,
-    private categoriesService: CategoriesService
+    private categoriesService: CategoriesService,
+    private _Router: Router
   ) {}
 
   catId: string | null = '';
@@ -45,5 +46,9 @@ export class CategoreydetailsComponent implements OnInit {
         console.log(err);
       },
     });
+  }
+
+  navigateToProducts(categoryId: any): void {
+    this._Router.navigate(['/products'], { queryParams: { category: categoryId } });
   }
 }
