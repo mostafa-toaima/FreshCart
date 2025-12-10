@@ -5,41 +5,41 @@
     >
       <div class="product-card">
         <!-- Fav Icon -->
-        <div class="fav-icon" (click)="wishListData.includes(item._id) ? removeFav(item._id) : addFav(item._id)">
+        <!-- <div class="fav-icon" (click)="wishListData.includes(item._id) ? removeFav(item._id) : addFav(item._id)">
           <i
             class="fa-heart"
             [class.fa-solid]="wishListData.includes(item._id)"
             [class.fa-regular]="!wishListData.includes(item._id)"
           ></i>
-        </div>
+        </div> -->
 
         <!-- Product Image -->
-        <div class="img-wrapper" [routerLink]="['/products/productdetails', item._id]">
-          <img [src]="item.imageCover" [alt]="item.title" />
+        <div class="img-wrapper" [routerLink]="['/products/productdetails', item.productId]">
+          <img [src]="'./assets/images/products/' + item?.mainImgPath" [alt]="item.productName" />
         </div>
 
         <!-- Content -->
         <div class="details">
-          <h3 class="title">{{ item.title | cutText : 2 }}</h3>
-          <p class="category">{{ item?.category?.name }}</p>
+          <h3 class="title">{{ item.productName | cutText : 2 }}</h3>
+          <p class="category">{{ item?.categoryName }}</p>
 
           <div class="price-rating">
-            <span class="price">{{ item.price | currency : "EGP " }}</span>
+            <span class="price">{{ item.productPrice | currency : "EGP " }}</span>
 
             <div class="rating">
               <i
                 *ngFor="let num of [1,2,3,4,5]"
                 class="fas fa-star"
-                [class.active]="item.ratingsAverage >= num"
+                [class.active]="item.rating >= num"
               ></i>
-              <span class="rate-number">{{ item.ratingsAverage }}</span>
+              <span class="rate-number">{{ item.rating }}</span>
             </div>
           </div>
         </div>
 
         <!-- Add To Cart -->
         <button
-          (click)="addToCart(item._id, btnAdd)"
+          (click)="addToCart(item.productId, btnAdd)"
           #btnAdd
           class="btn main-btn w-100 add-btn"
         >

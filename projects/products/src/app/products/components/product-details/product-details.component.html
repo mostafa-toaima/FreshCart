@@ -5,30 +5,30 @@
     <div class="col-lg-5">
       <div class="product-gallery shadow-sm rounded bg-white p-3">
         <owl-carousel-o [options]="productDetailsOptions">
-          <ng-container *ngFor="let path of productDetails?.images">
+          <!-- *ngFor="let path of productDetails?.images" -->
+          <ng-container >
             <ng-template carouselSlide>
-              <img class="img-fluid rounded main-img" [src]="path" />
+              <img class="img-fluid rounded main-img object-fit-contain" [src]="'./assets/images/products/' + productDetails?.mainImgPath" />
             </ng-template>
           </ng-container>
         </owl-carousel-o>
 
       </div>
     </div>
-
     <div class="col-lg-7">
       <div class="product-info bg-white shadow-sm rounded p-4">
         <span class="badge bg-main-light text-main mb-2 px-3 py-2 fw-bold">
-          {{ productDetails?.category?.name }}
+          {{ productDetails?.categoryName }}
         </span>
-        <h2 class="fw-bold mb-2">{{ productDetails?.title }}</h2>
-        <p class="text-muted small">{{ productDetails?.description }}</p>
+        <h2 class="fw-bold mb-2">{{ productDetails?.productName }}</h2>
+        <p class="text-muted small">{{ productDetails?.productDescription }}</p>
         <div class="d-flex align-items-center justify-content-between my-3">
           <span class="h4 fw-bold text-featured">
-            {{ productDetails?.price | currency : 'EGP ' }}
+            {{ productDetails?.productPrice | currency : 'EGP ' }}
           </span>
           <div>
             <i class="fas fa-star rating-color"></i>
-            <span class="fw-bold ms-1">{{ productDetails?.ratingsAverage }}</span>
+            <span class="fw-bold ms-1">{{ productDetails?.rating }}</span>
           </div>
         </div>
         <div class="mb-3">
@@ -36,7 +36,7 @@
         </div>
         <div class="d-flex gap-3 mt-4">
           <button
-            (click)="addToCart(productDetails._id, btnAdd)"
+            (click)="addToCart(productDetails.productId, btnAdd)"
             #btnAdd
             class="btn main-btn flex-grow-1 py-2 fs-6"
           >

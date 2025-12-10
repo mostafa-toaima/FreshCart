@@ -1,10 +1,14 @@
 export interface Product {
-  _id: string;
-  imageCover: string;
-  title: string;
-  price: number;
-  ratingsAverage: number;
-  category: {
-    name: string;
-  };
+  productId: number,
+  productName: string,
+  productDescription: string;
+  productPrice: number;
+  stockQuantity: number;
+  rating: number;
+  categoryId: number;
+  categoryName: string;
+  categoryDescription: string;
+  mainImgPath: string;
+  producerId: number;
+  producerName: string | null;
 }

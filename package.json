@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve shell",
-    "start:products": "ng serve products",
+    "products": "ng serve products",
     "cart": "ng serve cart",
     "auth": "ng serve auth",
     "run:all": "node run-all.js",

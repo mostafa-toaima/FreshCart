@@ -49,6 +49,7 @@ export class LoginComponent implements OnInit {
           console.log(res);
           this._Router.navigate(['/home']);
           localStorage.setItem('token', res.token);
+          localStorage.setItem("user", JSON.stringify(res?.user));
           this._AuthService.decodedToken();
           this.isLoading = false;
           this._Render2.removeAttribute(btnLogin, 'disabled');

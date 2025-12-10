@@ -14,6 +14,7 @@ import { SearchPipe } from '../../../../../common/src/lib/Pipes/search.pipe';
 import { Categories } from '../../../../../common/src/lib/interfaces/categories';
 import { Product } from '../../../../../common/src/lib/interfaces/product';
 
+import { CategoriesService } from '../../../../../common/src/lib/Services/categories.service';
 import { ProductsService } from '../../../../../common/src/lib/Services/products.service';
 import { WishlistService } from '../../../../../common/src/lib/Services/wishlist.service';
 import { CartService } from '../../../../../common/src/lib/Services/cart.service';
@@ -73,6 +74,7 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private _ProductsService: ProductsService,
+    private categoriesService: CategoriesService,
     private _CartService: CartService,
     private _TostarService: ToastrService,
     private _Render2: Renderer2,
@@ -86,19 +88,19 @@ export class HomeComponent implements OnInit {
   }
 
   getWishListUser() {
-    this._WishlistService.getLoggedUserWishlist().subscribe({
-      next: (res) => {
-        console.log(res);
-        this.wishListData = res.data.map((item: any) => item._id);
-      },
-    });
+    // this._WishlistService.getLoggedUserWishlist().subscribe({
+    //   next: (res) => {
+    //     console.log(res);
+    //     this.wishListData = res.data.map((item: any) => item._id);
+    //   },
+    // });
   }
 
   getPopularProducts() {
     this._ProductsService.GetAllProducts().subscribe({
       next: (res) => {
 
-        this.products = res.data;
+        this.products = res.content;
         console.log('productsData ',this.products);
       },
       error: (error) => {
@@ -107,10 +109,10 @@ export class HomeComponent implements OnInit {
     });
   }
   getCategories() {
-    this._ProductsService.GetCategories().subscribe({
+    this.categoriesService.GetCategories().subscribe({
       next: (res) => {
         console.log(res);
-        this.categories = res.data;
+        this.categories = res;
       },
       error: (error) => {
         console.log(error);

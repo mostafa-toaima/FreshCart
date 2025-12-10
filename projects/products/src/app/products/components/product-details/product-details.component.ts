@@ -18,7 +18,7 @@ import { ReleatedProducts } from './releated-products/releated-products.componen
   styleUrl: './product-details.component.scss',
 })
 export class ProductDetailsComponent implements OnInit {
-  productDetails: any = [];
+  productDetails: any;
   products: Product[] = [];
   wishListData: string[] = [];
   productId!: any;
@@ -58,7 +58,8 @@ export class ProductDetailsComponent implements OnInit {
     this._ProductsService.GetAllProducts().subscribe({
       next: (res) => {
 
-        this.products = res.data;
+        this.products = res.content;
+
         console.log('productsData ', this.products);
       },
       error: (error) => {
@@ -79,7 +80,7 @@ export class ProductDetailsComponent implements OnInit {
   getProductDetails() {
     this._ProductsService.GetSpecificProduct(this.productId).subscribe({
       next: (res) => {
-        this.productDetails = res.data;
+        this.productDetails = res;
       },
       error: (err) => {
         console.log(err);

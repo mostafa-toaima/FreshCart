@@ -7,6 +7,8 @@ import { Product } from '../../../../products/src/app/products/models/product';
 })
 export class SearchPipe implements PipeTransform {
   transform(products: Product[], term: string): Product[] {
-    return products.filter((p)=> p.title.toLowerCase().includes(term.toLocaleLowerCase()));
+    if (!products || !term) return products;
+    return products.filter(p => p.productName?.toLowerCase().includes(term.toLowerCase()));
   }
 }
+

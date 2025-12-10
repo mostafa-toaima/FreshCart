@@ -7,6 +7,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class CartService {
   baseUrl: string = 'https://ecommerce.routemisr.com/api/v1/';
+  javazonBaseUrl: string = 'http://localhost:8082/javazon/cartItem';
 
   cartNumber: BehaviorSubject<number> = new BehaviorSubject(0);
 
@@ -14,13 +15,8 @@ export class CartService {
 
   constructor(private http: HttpClient) {}
 
-  addToCart(prodId: string): Observable<any> {
-    return this.http.post(
-      'https://ecommerce.routemisr.com/api/v1/cart',
-      {
-        productId: prodId,
-      }
-    );
+  addToCart(cartItemDto: any): Observable<any> {
+    return this.http.post(this.javazonBaseUrl + '/addProductToCart',{cartItemDto,});
   }
 
   getUserCart(): Observable<any> {

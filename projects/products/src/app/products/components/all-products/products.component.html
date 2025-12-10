@@ -15,42 +15,42 @@
       "
     >
       <div class="product h-100 px-2 py-2">
-        <i
-          *ngIf="!wishListData.includes(item._id)"
-          (click)="addFav(item._id)"
+        <!-- <i
+          *ngIf="!wishListData.includes(item.productId)"
+          (click)="addFav(item.productId)"
           class="fa-regular text-danger fa-heart heart"
         ></i>
         <i
           *ngIf="wishListData.includes(item._id)"
           (click)="removeFav(item._id)"
           class="fa-solid text-danger fa-heart heart"
-        ></i>
-        <header role="button" [routerLink]="['/products/productdetails', item._id]">
+        ></i> -->
+        <header role="button" [routerLink]="['/products/productdetails', item.productId]">
           <img
             class="w-100"
-            [src]="item?.imageCover"
-            [title]="item?.title"
-            [alt]="item?.title"
+            [src]="'./assets/images/products/' + item?.mainImgPath"
+            [title]="item?.productName"
+            [alt]="item?.productName"
           />
-          <h3 class="h6">{{ item.title | cutText : 2 }}</h3>
-          <h4 class="h6 text-main">{{ item?.category?.name }}</h4>
+          <h3 class="h6">{{ item.productName | cutText : 2 }}</h3>
+          <h4 class="h6 text-main">{{ item?.categoryName }}</h4>
           <div class="d-flex align-items-center justify-content-between small">
             <span>
-              {{ item.price | currency : "EGP " }}
+              {{ item.productPrice | currency : "EGP " }}
             </span>
             <p class="mb-0">
               <i
-                [class.rating-color]="item.ratingsAverage >= num"
+                [class.rating-color]="item.rating >= num"
                 *ngFor="let num of [1, 2, 3, 4, 5]"
                 class="fas fa-star font-sm"
               ></i>
-              <span class="text-muted">{{ item.ratingsAverage }}</span>
+              <span class="text-muted">{{ item.rating }}</span>
             </p>
           </div>
         </header>
         <footer>
           <button
-            (click)="addToCart(item._id, btnAdd)"
+            (click)="addToCart(item.productId, btnAdd)"
             #btnAdd
             class="btn main-btn w-100 my-2"
           >

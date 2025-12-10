@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { Component, Renderer2 } from '@angular/core';
 
 import { Product } from './../../models/product';
@@ -12,6 +13,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [
     CommonModule,
+    FormsModule,
     RouterModule,
     NgxPaginationModule,
     CutTextPipe
@@ -22,10 +24,10 @@ import { CommonModule } from '@angular/common';
 export class ProductsComponent {
   products: Product[] = [];
   pageSize: number = 0;
-  currentPage: number = 1;
+  currentPage: number = 0;
   total: number = 0;
   isLoading: boolean = false;
-  wishListData: string[] = [];
+  // wishListData: string[] = [];
 
   constructor(
     private _ProductsService: ProductsService,
@@ -52,11 +54,13 @@ export class ProductsComponent {
   getProducts(event: number) {
     this._ProductsService.GetAllProducts(event).subscribe({
       next: (res) => {
+        console.log("event", event);
+
         console.log('products ', res);
-        this.products = res.data;
-        this.pageSize = res.metadata.limit;
-        this.currentPage = res.metadata.currentPage;
-        this.total = res.results;
+        this.products = res.content;
+        this.pageSize = res.size;
+        this.currentPage = res.page;
+        this.total = res.totalPages;
       },
       error: (error) => {
         console.log(error);
