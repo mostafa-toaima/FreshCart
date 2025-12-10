@@ -120,20 +120,27 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  addToCart(id: any, element: HTMLButtonElement) {
+  addToCart(id: number, element: HTMLButtonElement) {
     this._Render2.setAttribute(element, 'disabled', 'true');
     this.isLoading = true;
-    this._CartService.addToCart(id).subscribe({
+
+    const user = JSON.parse(localStorage.getItem("user")!);
+    const userEmail = user?.email;
+
+    const cartItemDto = {
+      productId: id,
+      userEmail: userEmail,
+      quantity: 1
+    };
+
+    this._CartService.addToCart(cartItemDto).subscribe({
       next: (res) => {
-        console.log(res);
         this.isLoading = false;
         this._TostarService.success(res.message);
         this._Render2.removeAttribute(element, 'disabled');
-
         this._CartService.cartNumber.next(res.numOfCartItems);
       },
       error: (err) => {
-        console.log(err);
         this._TostarService.error(err.message);
         this.isLoading = false;
         this._Render2.removeAttribute(element, 'disabled');

@@ -16,7 +16,7 @@ export class CartService {
   constructor(private http: HttpClient) {}
 
   addToCart(cartItemDto: any): Observable<any> {
-    return this.http.post(this.javazonBaseUrl + '/addProductToCart',{cartItemDto,});
+    return this.http.post(this.javazonBaseUrl + '/addProductToCart', cartItemDto);
   }
 
   getUserCart(): Observable<any> {
