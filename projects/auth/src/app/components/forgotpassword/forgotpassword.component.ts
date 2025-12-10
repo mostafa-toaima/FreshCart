@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Output, Renderer2 } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, EventEmitter, Input, Output, Renderer2 } from '@angular/core';
+import { CommonModule, Location } from '@angular/common';
 import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ForgetpassService } from '../../services/forgetpass.service';
@@ -13,6 +13,7 @@ import { ForgetpassService } from '../../services/forgetpass.service';
 })
 export class ForgotpasswordComponent {
   @Output() close = new EventEmitter<void>();
+  @Input() login: boolean = false;
 
   step1 = true;
   step2 = false;
@@ -28,7 +29,8 @@ export class ForgotpasswordComponent {
   constructor(
     private _ForgetpassService: ForgetpassService,
     private _Renderer2: Renderer2,
-    private _Router: Router
+    private _Router: Router,
+    private location:Location
   ) { }
 
   forgotPassword(btn: HTMLButtonElement) {
@@ -97,6 +99,10 @@ export class ForgotpasswordComponent {
   }
 
   closeModal() {
-    this.close.emit();
+    if (this.login) {
+      this.close.emit();
+    } else {
+      this.location.back();
+    }
   }
 }

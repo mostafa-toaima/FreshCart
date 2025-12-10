@@ -19,10 +19,16 @@ export const routes: Routes = [
         .then(c => c.RegisterComponent)
   },
   {
-    path: 'updatepasswordAuth',
+    path: 'updatepassword',
     loadComponent: () =>
       import('./components/update-password/update-password.component')
         .then(m => m.UpdatePasswordComponent)
+  },
+  {
+    path: 'forgotpassword',
+    loadComponent: () =>
+      import('./components/forgotpassword/forgotpassword.component')
+        .then(m => m.ForgotpasswordComponent)
   }
 ];
 

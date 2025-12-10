@@ -45,12 +45,12 @@
       </ul>
 
       <ul class="navbar-nav ms-auto mt-2 mt-lg-0 navbarActionsDesign">
-        <li class="nav-item me-4 hstack">
+        <!-- <li class="nav-item me-4 hstack">
           <a routerLink="/wishlist" class="text-main number-item">
             <i class="fas fa-heart text-danger fa-2x"></i>
             <span *ngIf="whishItemNumber"> {{ whishItemNumber }} </span>
           </a>
-        </li>
+        </li> -->
 
         <li class="nav-item me-4">
           <div class="dropdown">
@@ -67,7 +67,7 @@
                 <a
                   class="dropdown-item small"
                   routerLinkActive="active-link"
-                  routerLink="/forgotpassword"
+                  routerLink="/auth/forgotpassword"
                   >Forgot Password</a
                 >
               </li>
@@ -75,7 +75,7 @@
                 <a
                   class="dropdown-item small"
                   routerLinkActive="active-link"
-                  routerLink="/updatepasswordAuth"
+                  routerLink="/auth/updatepassword"
                   >Update password</a
                 >
               </li>
@@ -89,7 +89,7 @@
             <span *ngIf="cartNumOfItems"> {{ cartNumOfItems }} </span>
           </a>
         </li>
-        <li class="nav-item d-flex align-items-center gap-3 me-4">
+        <!-- <li class="nav-item d-flex align-items-center gap-3 me-4">
           <a
             href="https://www.facebook.com/profile.php?id=100017140516294&mibextid=ZbWKwL"
             target="_blank"
@@ -102,7 +102,7 @@
             class="text-reset"
             ><i class="fab fa-whatsapp"></i
           ></a>
-        </li>
+        </li> -->
         <li class="nav-item">
           <span (click)="logOut()" class="nav-link" role="button">SignOut</span>
         </li>
