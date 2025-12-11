@@ -1,0 +1,50 @@
+<section class="lux-cart" *ngIf="cartItems && cartItems.content.length > 0; else msg">
+
+  <div class="lux-header">
+    <h1>Your Cart</h1>
+    <button class="clear-btn" (click)="clearCart()">Clear All</button>
+  </div>
+
+  <div class="lux-total">
+    <p>Total</p>
+    <h2>{{ cartItems.totalAmount | currency : "EGP " }}</h2>
+  </div>
+
+  <div class="lux-list">
+    <div class="lux-item" *ngFor="let item of cartItems.content">
+
+      <div class="lux-img-wrapper">
+        <img [src]="'./assets/images/products/' + item?.mainImgPath"
+             [alt]="item?.productName" />
+      </div>
+
+      <div class="lux-info">
+        <h3>{{ item?.productName }}</h3>
+        <p class="lux-price">{{ item.price | currency : "EGP " }}</p>
+
+        <button class="lux-remove"
+                #btnRemove
+                (click)="removeItem(item.cartItemId, btnRemove)">
+          <i *ngIf="!btnRemove.disabled" class="fas fa-trash"></i>
+          <i *ngIf="btnRemove.disabled" class="fas fa-spinner fa-spin"></i>
+          Remove
+        </button>
+      </div>
+
+      <div class="lux-qty">
+        <button #btn1 (click)="updateItem(item.cartItemId, item.quantity - 1, btn1, btn2)">−</button>
+        <span>{{ item.quantity }}</span>
+        <button #btn2 (click)="updateItem(item.cartItemId, item.quantity + 1, btn1, btn2)">+</button>
+      </div>
+
+    </div>
+  </div>
+
+  <button class="lux-checkout" [routerLink]="['/payment', cartItems._id]">
+    Checkout
+  </button>
+</section>
+
+<ng-template #msg>
+  <h2 class="empty">Your cart is empty</h2>
+</ng-template>

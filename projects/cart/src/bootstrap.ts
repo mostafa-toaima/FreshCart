@@ -1,7 +1,14 @@
-import { platformBrowser } from '@angular/platform-browser';
-import { CartModule } from './app/cart.module';
+import { bootstrapApplication } from '@angular/platform-browser';
+import { provideHttpClient } from '@angular/common/http';
+import { provideRouter } from '@angular/router';
+import { routes } from './app/cart.routes';
+import { CartMainComponent } from './app/cart-main.component';
 
-platformBrowser().bootstrapModule(CartModule, {
-  ngZoneEventCoalescing: true,
-})
-  .catch(err => console.error(err));
+bootstrapApplication(CartMainComponent, {
+  providers: [
+    provideHttpClient(),
+    provideRouter(routes)
+  ]
+}).then(() => {
+}).catch(err => {
+});

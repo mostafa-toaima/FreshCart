@@ -5,11 +5,16 @@ module.exports = withNativeFederation({
   name: 'cart',
 
   exposes: {
-    './Component': './projects/cart/src/app/app.ts'
+    './Component': './projects/cart/src/app/cart-main.component.ts',
+    './cart-routes': './projects/cart/src/app/cart.routes.ts',
   },
 
   shared: {
-    ...shareAll({ singleton: true, strictVersion: true, requiredVersion: 'auto' }),
+    ...shareAll({
+      singleton: true,
+      strictVersion: true,
+      requiredVersion: 'auto'
+    }),
   },
 
   skip: [
@@ -19,10 +24,6 @@ module.exports = withNativeFederation({
     'rxjs/webSocket',
     'swiper/react',
     'swiper/vue',
-    // Add further packages you don't need at runtime
   ]
-
-  // Please read our FAQ about sharing libs:
-  // https://shorturl.at/jmzH0
 
 });

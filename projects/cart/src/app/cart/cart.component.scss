@@ -1,0 +1,163 @@
+.lux-cart {
+  width: 70%;
+  margin: 30px auto;
+  padding: 20px 25px;
+  border-radius: 14px;
+  background: #ffffff;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* HEADER */
+.lux-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.lux-header h1 {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.clear-btn {
+  padding: 5px 12px;
+  border: 1px solid #ff4d4d;
+  background: transparent;
+  color: #ff4d4d;
+  border-radius: 6px;
+  font-size: 13px;
+  transition: 0.2s;
+}
+
+.clear-btn:hover {
+  background: #ff4d4d;
+  color: white;
+}
+
+/* TOTAL */
+.lux-total {
+  margin: 10px 0 15px;
+  padding: 12px 18px;
+  background: #eefdf6;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.lux-total h2 {
+  margin: 0;
+  font-size: 20px;
+  color: #0a8f5a;
+}
+
+/* ITEMS LIST */
+.lux-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* ITEM */
+.lux-item {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 12px;
+  border-radius: 12px;
+  background: white;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+  transition: 0.25s;
+}
+
+.lux-item:hover {
+  transform: translateY(-3px);
+}
+
+/* IMAGE */
+.lux-img-wrapper img {
+  width: 75px;
+  height: 75px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+/* INFO */
+.lux-info h3 {
+  font-size: 15px;
+  margin: 0 0 4px;
+}
+
+.lux-price {
+  font-size: 15px;
+  font-weight: 600;
+  color: #0a8f5a;
+  margin-bottom: 6px;
+}
+
+.lux-remove {
+  background: transparent;
+  border: none;
+  color: #ff4646;
+  font-size: 13px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.lux-remove:hover {
+  color: #d93535;
+}
+
+/* QUANTITY */
+.lux-qty {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.lux-qty button {
+  width: 28px;
+  height: 28px;
+  border: 1px solid #0a8f5a;
+  background: white;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.lux-qty button:hover {
+  background: #0a8f5a;
+  color: white;
+}
+
+.lux-qty span {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+/* CHECKOUT BUTTON */
+.lux-checkout {
+  width: 100%;
+  margin-top: 20px;
+  padding: 12px;
+  font-size: 17px;
+  border: none;
+  background: #0a8f5a;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.lux-checkout:hover {
+  background: #066a43;
+}
+
+.empty {
+  text-align: center;
+  margin-top: 40px;
+  color: #888;
+}
