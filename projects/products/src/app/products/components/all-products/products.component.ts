@@ -4,9 +4,12 @@ import { Component, Renderer2 } from '@angular/core';
 import { Product } from './../../models/product';
 import { ProductsService } from '../../services/products.service';
 import { CutTextPipe } from '../../../../../../common/src/lib/Pipes/cut-text.pipe';
+import { CartService } from './../../../../../../common/src/lib/Services/cart.service';
+
 import { NgxPaginationModule } from 'ngx-pagination';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'javazone-products',
@@ -32,8 +35,8 @@ export class ProductsComponent {
   constructor(
     private _ProductsService: ProductsService,
     private _Render2: Renderer2,
-    // private _TostarService: ToastrService,
-    // private _CartService: CartService,
+    private _TostarService: ToastrService,
+    private _CartService: CartService,
     // private _WishlistService: WishlistService
   ) { }
 
@@ -75,24 +78,32 @@ export class ProductsComponent {
   }
 
   addToCart(id: any, element: HTMLButtonElement) {
-    // this._Render2.setAttribute(element, 'disabled', 'true');
-    // this.isLoading = true;
-    // this._CartService.addToCart(id).subscribe({
-    //   next: (res) => {
-    //     console.log(res);
-    //     this.isLoading = false;
-    //     this._TostarService.success(res.message);
-    //     this._Render2.removeAttribute(element, 'disabled');
+    this._Render2.setAttribute(element, 'disabled', 'true');
+    this.isLoading = true;
 
-    //     this._CartService.cartNumber.next(res.numOfCartItems);
-    //   },
-    //   error: (err) => {
-    //     console.log(err);
-    //     this._TostarService.error(err.message);
-    //     this.isLoading = false;
-    //     this._Render2.removeAttribute(element, 'disabled');
-    //   },
-    // });
+    const user = JSON.parse(localStorage.getItem("user")!);
+    const userEmail = user?.email;
+
+    const cartItemDto = {
+      productId: id,
+      userId: 1,
+      userEmail: userEmail,
+      quantity: 1
+    };
+
+    this._CartService.addToCart(cartItemDto).subscribe({
+      next: (res) => {
+        this.isLoading = false;
+        this._TostarService.success(res);
+        this._Render2.removeAttribute(element, 'disabled');
+        this._CartService.cartNumber.next(res.numOfCartItems);
+      },
+      error: (err) => {
+        this._TostarService.error(err.message);
+        this.isLoading = false;
+        this._Render2.removeAttribute(element, 'disabled');
+      },
+    });
   }
 
   addFav(productId: string): void {

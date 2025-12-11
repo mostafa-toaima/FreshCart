@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, Input, Renderer2 } from '@angular/core';
 import { CutTextPipe } from '../../../../../../../common/src/lib/Pipes/cut-text.pipe';
 
 import { ReleatedProductsPipe } from './../../../../../../../common/src/lib/Pipes/releatedProducts.pipe';
@@ -7,6 +7,7 @@ import { ToastrService } from 'ngx-toastr';
 import { WishlistService } from '../../../../../../../common/src/lib/Services/wishlist.service';
 import { Product } from '../../../models/product';
 import { RouterLink } from '@angular/router';
+import { CartService } from '../../../../../../../common/src/lib/Services/cart.service';
 @Component({
   selector: 'javazone-releated-products',
   imports: [CommonModule, ReleatedProductsPipe, CutTextPipe, RouterLink],
@@ -16,10 +17,13 @@ import { RouterLink } from '@angular/router';
 export class ReleatedProducts {
   @Input() products: Product[] = [];
   wishListData: string[] = [];
+  isLoading: boolean = false;
 
   constructor(
     private _TostarService: ToastrService,
-    private _WishlistService: WishlistService
+    private _WishlistService: WishlistService,
+    private _Render2: Renderer2,
+    private _CartService: CartService,
   ) {
 
   }
@@ -53,24 +57,31 @@ export class ReleatedProducts {
   }
 
   addToCart(id: any, element: HTMLButtonElement) {
-    // this._Render2.setAttribute(element, 'disabled', 'true');
-    // this.isLoading = true;
-    // this._CartService.addToCart(id).subscribe({
-    //   next: (res) => {
-    //     console.log(res);
-    //     this.isLoading = false;
-    //     this._TostarService.success(res.message);
-    //     this._Render2.removeAttribute(element, 'disabled');
+    this._Render2.setAttribute(element, 'disabled', 'true');
+    this.isLoading = true;
 
-    //     this._CartService.cartNumber.next(res.numOfCartItems);
-    //   },
-    //   error: (err) => {
-    //     console.log(err);
-    //     this._TostarService.error(err.message);
-    //     this.isLoading = false;
-    //     this._Render2.removeAttribute(element, 'disabled');
-    //   },
-    // });
+    const user = JSON.parse(localStorage.getItem("user")!);
+    const userEmail = user?.email;
+
+    const cartItemDto = {
+      productId: id,
+      userId: 1,
+      userEmail: userEmail,
+      quantity: 1
+    };
+
+    this._CartService.addToCart(cartItemDto).subscribe({
+      next: (res) => {
+        this.isLoading = false;
+        this._TostarService.success(res);
+        this._Render2.removeAttribute(element, 'disabled');
+        this._CartService.cartNumber.next(res.numOfCartItems);
+      },
+      error: (err) => {
+        this._TostarService.error(err.message);
+        this.isLoading = false;
+        this._Render2.removeAttribute(element, 'disabled');
+      },
+    });
   }
-
 }
