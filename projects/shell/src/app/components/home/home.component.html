@@ -92,16 +92,15 @@
   <p class="text-center m-3 text-main fs-6">Excepteur sint occaecat cupidatat non proident,sunt in culpa qui officia deserunt <br> mollit anim id est laborum.</p>
 
   <owl-carousel-o [options]="categoryOptions">
-    <ng-container *ngFor="let category of categories" [routerLink]="['/categories/details', category._id]">
-      <ng-template carouselSlide>
+    <ng-container *ngFor="let category of categories">
+      <ng-template carouselSlide [routerLink]="['/categories/details', category.categoryId]" style="cursor:pointer">
         <img
           height="300px"
-          [src]="category.image"
           [src]="'./assets/images/category/' + category?.mainImgPath"
-          [alt]="category.name"
-          [title]="category.name"
+          [alt]="category.categoryName"
+          [title]="category.categoryName"
         />
-        <h3 class="h6 text-main text-center py-3">{{ category.name }}</h3>
+        <h3 class="h6 text-main text-center py-3">{{ category.categoryName }}</h3>
       </ng-template>
     </ng-container>
   </owl-carousel-o>
