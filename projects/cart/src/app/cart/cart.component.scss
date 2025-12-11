@@ -161,3 +161,15 @@
   margin-top: 40px;
   color: #888;
 }
+
+.lux-qty button:disabled {
+  background: #ccc !important;
+  border-color: #aaa !important;
+  color: #666 !important;
+  cursor: not-allowed !important;
+}
+
+.lux-qty button:disabled:hover {
+  background: #ccc !important;
+  color: #666 !important;
+}

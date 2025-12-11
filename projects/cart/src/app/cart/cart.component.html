@@ -7,7 +7,7 @@
 
   <div class="lux-total">
     <p>Total</p>
-    <h2>{{ cartItems.totalAmount | currency : "EGP " }}</h2>
+    <h2>{{ cartItems.totalAmount | currency : 'EGP ' }}</h2>
   </div>
 
   <div class="lux-list">
@@ -20,7 +20,7 @@
 
       <div class="lux-info">
         <h3>{{ item?.productName }}</h3>
-        <p class="lux-price">{{ item.price | currency : "EGP " }}</p>
+        <p class="lux-price">{{ (item.subtotal) | currency : 'EGP ' }}</p>
 
         <button class="lux-remove"
                 #btnRemove
@@ -32,7 +32,8 @@
       </div>
 
       <div class="lux-qty">
-        <button #btn1 (click)="updateItem(item.cartItemId, item.quantity - 1, btn1, btn2)">−</button>
+        <button #btn1 [disabled]="item.quantity === 1"
+                (click)="updateItem(item.cartItemId, item.quantity - 1, btn1, btn2)">−</button>
         <span>{{ item.quantity }}</span>
         <button #btn2 (click)="updateItem(item.cartItemId, item.quantity + 1, btn1, btn2)">+</button>
       </div>

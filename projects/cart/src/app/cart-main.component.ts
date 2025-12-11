@@ -2,7 +2,7 @@ import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'javazone-cart',
+  selector: 'javazone-main-cart',
   template: "<p>javazone-cart</p>",
   standalone: true,
 })

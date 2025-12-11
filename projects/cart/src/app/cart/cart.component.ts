@@ -3,16 +3,17 @@ import { ChangeDetectorRef, Component, OnInit, Renderer2 } from '@angular/core';
 import { CartService } from '../../../../common/src/lib/Services/cart.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router, RouterLink } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-cart',
+  selector: 'javazone-cart',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, FormsModule],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss',
 })
 export class CartComponent implements OnInit {
-  cartItems: any = null;
+  cartItems: any = { content: [], totalAmount: 0 };
 
   constructor(
     private _CartService: CartService,
@@ -20,83 +21,83 @@ export class CartComponent implements OnInit {
     private router: Router,
     private cdr: ChangeDetectorRef,
     private _TostarService: ToastrService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.getLoggedUserCart();
+  }
+
+  calculateTotal() {
+    if (!this.cartItems?.content) return;
+    this.cartItems.totalAmount = this.cartItems.content
+      .reduce((sum: number, item: any) => sum + (item.quantity * item.price), 0);
   }
 
   getLoggedUserCart() {
     this._CartService.getUserCart(1).subscribe({
       next: (res) => {
         this.cartItems = res;
-        console.log(res);
+        this.calculateTotal();
       },
-      error: (err) => {
-        console.log();
+      error: () => { },
+    });
+  }
+
+  updateItem(cartItemId: number, countNumber: number, btn1: HTMLButtonElement, btn2: HTMLButtonElement) {
+
+    if (countNumber < 1) {
+      this.removeItem(cartItemId);
+      return;
+    }
+
+    const item = this.cartItems.content.find((i: any) => i.cartItemId === cartItemId);
+    if (item) item.quantity = countNumber;
+    this.calculateTotal();
+
+    this._Render2.setAttribute(btn1, 'disabled', 'true');
+    this._Render2.setAttribute(btn2, 'disabled', 'true');
+
+    this._CartService.updateProductCount(cartItemId, countNumber, 1).subscribe({
+      next: (response) => {
+        this.cartItems = response;
+        this.calculateTotal();
+        this._Render2.removeAttribute(btn1, 'disabled');
+        this._Render2.removeAttribute(btn2, 'disabled');
+      },
+      error: () => {
+        this._Render2.removeAttribute(btn1, 'disabled');
+        this._Render2.removeAttribute(btn2, 'disabled');
+        this.getLoggedUserCart();
       },
     });
   }
 
-  updateItem(
-    cartItemId: number,
-    countNumber: number,
-    btn1: HTMLButtonElement,
-    btn2: HTMLButtonElement
-  ) {
-    if (countNumber >= 1) {
-      this._Render2.setAttribute(btn1, 'disabled', 'true');
-      this._Render2.setAttribute(btn2, 'disabled', 'true');
-      this._CartService.updateProductCount(cartItemId, countNumber, 1).subscribe({
-        next: (response) => {
-          console.log(response);
-          this.cartItems = response;
-          this._Render2.removeAttribute(btn1, 'disabled');
-          this._Render2.removeAttribute(btn2, 'disabled');
-        },
-        error: (error) => {
-          console.log(error);
-          this._Render2.removeAttribute(btn1, 'disabled');
-          this._Render2.removeAttribute(btn2, 'disabled');
-        },
-      });
-    } else {
-      this._CartService.removeSpecificItem(cartItemId).subscribe((res) => {
-        this.cartItems = res;
-        this._TostarService.info("Item removed");
-        this._CartService.cartNumber.next(res.numOfCartItems);
-      });
-    }
-  }
+  removeItem(cartItemId: number, btnRef?: HTMLButtonElement): void {
+    if (btnRef) this._Render2.setAttribute(btnRef, 'disabled', 'true');
 
+    this.cartItems.content = this.cartItems.content.filter(
+      (item: any) => item.cartItemId !== cartItemId
+    );
+    this.calculateTotal();
+    this._CartService.cartNumber.next(this.cartItems.content.length);
 
-  removeItem(cartItemId: number, btnRef: HTMLButtonElement): void {
-    this._Render2.setAttribute(btnRef, 'disabled', 'true');
     this._CartService.removeSpecificItem(cartItemId).subscribe({
-      next: (response) => {
-        console.log(response);
-        this.cartItems = response;
-        this.cdr.detectChanges();
-        this._Render2.removeAttribute(btnRef, 'disabled');
-        this._CartService.cartNumber.next(response.numOfCartItems);
-      },
-      error: (error) => {
-        console.log(error);
-        this._Render2.removeAttribute(btnRef, 'disabled');
+      next: (response) => { },
+      error: () => {
+        this.getLoggedUserCart();
       },
     });
   }
 
   clearCart() {
+    this.cartItems = { content: [], totalAmount: 0 };
+    this._CartService.cartNumber.next(0);
     this._CartService.deleteCrt(1).subscribe({
-      next: (res) => {
-        console.log("res open", res);
-          this.cartItems = null;
-          this.router.navigate(['/home']);
-          this._TostarService.success('Cart is cleared successfully', 'Success')
+      next: () => {
+        this._TostarService.success('Cart cleared successfully');
+        this.router.navigate(['/home']);
       },
-      error:(err)=>{console.log(err);
-      }
-    })
+      error: () => this.getLoggedUserCart()
+    });
   }
 }
