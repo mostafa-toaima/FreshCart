@@ -1,19 +1,18 @@
-<section class="category-details" *ngIf="categoryDetails?._id">
+<section class="category-details" *ngIf="categoryDetails.categoryId">
   <div class="details-card">
 
     <div class="image-box">
-      <img [src]="categoryDetails.image" [alt]="categoryDetails.name" />
+        <img [src]="'./assets/images/category/' + categoryDetails.mainImgPath" [alt]="categoryDetails.categoryName" />
     </div>
 
     <div class="info-box">
-      <h1 class="title">{{ categoryDetails.name }}</h1>
+      <h1 class="title">{{ categoryDetails.categoryName }}</h1>
 
       <p class="description">
-        Discover our exclusive collection of <strong>{{ categoryDetails.name }}</strong>.
-        Each product is carefully selected to match style, elegance, and luxury.
+       {{ categoryDetails.categoryDescription }}
       </p>
 
-      <button class="explore-btn" (click)="navigateToProducts(categoryDetails._id)">
+      <button class="explore-btn" (click)="navigateToProducts(categoryDetails.categoryId)">
         Explore Products
       </button>
     </div>

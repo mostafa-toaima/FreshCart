@@ -58,24 +58,27 @@ export class NavBlankComponent implements OnInit {
       },
     });
 
-    this._CartService.getUserCart().subscribe({
+    // const user = JSON.parse(localStorage.getItem("user")!);
+    // const userEmail = user?.email;
+
+    this._CartService.getUserCart(1).subscribe({
       next: (response) => {
-        this.cartNumOfItems = response.numOfCartItems;
+        this.cartNumOfItems = response.totalElements;
       },
     });
 
     //wishList
-    this._WishlistService.whishItemNumber.subscribe({
-      next: (dataNum) => {
-        this.whishItemNumber = dataNum;
-      }
-    })
-    this._WishlistService.getLoggedUserWishlist().subscribe({
-      next: (dataNum) => {
-        this.whishItemNumber = dataNum.count;
-        console.log(this.whishItemNumber);
-      }
-    })
+    // this._WishlistService.whishItemNumber.subscribe({
+    //   next: (dataNum) => {
+    //     this.whishItemNumber = dataNum;
+    //   }
+    // })
+    // this._WishlistService.getLoggedUserWishlist().subscribe({
+    //   next: (dataNum) => {
+    //     this.whishItemNumber = dataNum.count;
+    //     console.log(this.whishItemNumber);
+    //   }
+    // })
 
   }
 

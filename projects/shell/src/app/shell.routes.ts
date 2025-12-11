@@ -29,6 +29,12 @@ export const routes: Routes = [
         loadChildren: () =>
           loadRemoteModule('products', './categories-routes').then(m => m.routes)
       },
+      {
+        path: 'cart',
+        loadChildren: () =>
+          loadRemoteModule('cart', './cart-routes').then(m => m.routes)
+      },
+
     ]
   },
 

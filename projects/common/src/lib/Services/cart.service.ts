@@ -19,25 +19,29 @@ export class CartService {
     return this.http.post(this.javazonBaseUrl + '/addProductToCart', cartItemDto);
   }
 
-  getUserCart(): Observable<any> {
-    return this.http.get('https://ecommerce.routemisr.com/api/v1/cart');
+  // getUserCart(): Observable<any> {
+  //   return this.http.get('https://ecommerce.routemisr.com/api/v1/cart');
+  // }
+
+  getUserCart(userId: number): Observable<any> {
+    return this.http.get(this.javazonBaseUrl + `/getUserCartItems/${userId}`);
   }
 
-  updateProductCount(prodId: string, countNum: number): Observable<any> {
+  updateProductCount(cartItemId: number, countNum: number, userId: number): Observable<any> {
     return this.http.put(
-      this.baseUrl + `cart/${prodId}`,
+      this.javazonBaseUrl + `/updateCount/${cartItemId}/user/${userId}`,
       {
         count: countNum,
       }
     );
   }
 
-  removeSpecificItem(prodId: string): Observable<any> {
-    return this.http.delete(this.baseUrl + `cart/${prodId}`);
+  removeSpecificItem(cartItemId: number): Observable<any> {
+    return this.http.delete(this.javazonBaseUrl + `/deleteItem/${cartItemId}`);
   }
 
-  deleteCrt(): Observable<any> {
-    return this.http.delete(this.baseUrl + 'cart');
+  deleteCrt(userId: number): Observable<any> {
+    return this.http.delete(this.javazonBaseUrl + `/clearAllCart/${userId}`);
   }
 
   checkOut(cartId: string|null, orderInfo:  object): Observable<any> {

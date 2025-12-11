@@ -20,7 +20,7 @@ export class CategoreydetailsComponent implements OnInit {
     private _Router: Router
   ) {}
 
-  catId: string | null = '';
+  catId: any;
 
 
   categoryDetails: Categories = {} as Categories;
@@ -39,7 +39,7 @@ export class CategoreydetailsComponent implements OnInit {
     this.categoriesService.GetCategoryDetails(this.catId).subscribe({
       next: (res) => {
         console.log(res);
-        this.categoryDetails = res.data;
+        this.categoryDetails = res;
       },
 
       error: (err) => {

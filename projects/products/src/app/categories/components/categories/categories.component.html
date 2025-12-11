@@ -3,15 +3,15 @@
     <div
       class="category-card"
       *ngFor="let category of categoriesData"
-      [routerLink]="['/categories/details', category._id]"
+      [routerLink]="['/categories/details', category.categoryId]"
       role="button"
     >
       <div class="image-wrapper">
-        <img [src]="category.image" [alt]="category.name" />
+        <img [src]="'./assets/images/category/' + category.mainImgPath" [alt]="category.categoryName" />
       </div>
 
       <div class="category-name">
-        {{ category.name }}
+        {{ category.categoryName }}
       </div>
     </div>
   </div>
