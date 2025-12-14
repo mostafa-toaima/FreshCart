@@ -94,12 +94,12 @@ export class ProductsComponent {
     this._CartService.addToCart(cartItemDto).subscribe({
       next: (res) => {
         this.isLoading = false;
-        this._TostarService.success(res);
+        this._TostarService.success("Product Added To Cart");
         this._Render2.removeAttribute(element, 'disabled');
         this._CartService.cartNumber.next(res.numOfCartItems);
       },
       error: (err) => {
-        this._TostarService.error(err.message);
+        this._TostarService.error("General Error");
         this.isLoading = false;
         this._Render2.removeAttribute(element, 'disabled');
       },

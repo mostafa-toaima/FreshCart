@@ -9,6 +9,7 @@ import {
 import { Router, RouterLink } from "@angular/router";
 
 import { AuthService } from '../../services/auth.service';
+import { User } from "../../interfaces/user";
 
 @Component({
   selector: "app-register",
@@ -71,7 +72,13 @@ export class RegisterComponent implements OnInit {
   registerHandel(registerForm: FormGroup) {
     this.isLoading = true;
     if (registerForm.valid) {
-      this._AuthService.SignUp(registerForm.value).subscribe({
+      const userData: User = {
+        userName: this.registerForm.value.name,
+        email: this.registerForm.value.email,
+        password: this.registerForm.value.password
+      };
+
+      this._AuthService.SignUp(userData).subscribe({
         next: (res) => {
           console.log(res);
           this._Router.navigate(["/home"]);

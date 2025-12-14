@@ -9,21 +9,16 @@ import { jwtDecode } from 'jwt-decode';
 })
 export class AuthService {
   userInfo: any;
+  javazonBaseUrl: string = 'http://localhost:8082/javazon/user';
 
   constructor(private http: HttpClient) {}
 
   SignUp(userData: User): Observable<any> {
-    return this.http.post(
-      'https://ecommerce.routemisr.com/api/v1/auth/signup',
-      userData
-    );
+    return this.http.post(this.javazonBaseUrl + '/register',userData);
   }
 
   Login(userData: User): Observable<any> {
-    return this.http.post(
-      'https://ecommerce.routemisr.com/api/v1/auth/signin',
-      userData
-    );
+    return this.http.post(this.javazonBaseUrl + '/login', userData);
   }
 
   decodedToken(): void {
@@ -32,8 +27,6 @@ export class AuthService {
       if (encode !== null) {
         const decode = jwtDecode(encode);
         this.userInfo = decode;
-        console.log(this.userInfo);
-
       }
     }
   }

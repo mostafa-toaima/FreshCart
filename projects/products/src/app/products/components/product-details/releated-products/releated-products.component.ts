@@ -28,32 +28,32 @@ export class ReleatedProducts {
 
   }
 
-  addFav(productId: string): void {
-    this._WishlistService.addItemToWishList(productId).subscribe({
-      next: (response) => {
-        console.log(response);
-        this._TostarService.success(response.message);
-        this.wishListData = response.data;
-        this._WishlistService.whishItemNumber.next(response.data.length);
-      },
-      error: (error) => {
-        console.log(error);
-      },
-    });
-  }
+  // addFav(productId: string): void {
+  //   this._WishlistService.addItemToWishList(productId).subscribe({
+  //     next: (response) => {
+  //       console.log(response);
+  //       this._TostarService.success(response.message);
+  //       this.wishListData = response.data;
+  //       this._WishlistService.whishItemNumber.next(response.data.length);
+  //     },
+  //     error: (error) => {
+  //       console.log(error);
+  //     },
+  //   });
+  // }
 
 
   removeFav(productId: string): void {
-    this._WishlistService.removeItemFromWishList(productId).subscribe({
-      next: (response) => {
-        this._TostarService.success(response.message);
-        this.wishListData = response.data;
-        this._WishlistService.whishItemNumber.next(response.data.length);
-      },
-      error: (error) => {
-        console.log(error);
-      },
-    });
+    // this._WishlistService.removeItemFromWishList(productId).subscribe({
+    //   next: (response) => {
+    //     this._TostarService.success(response.message);
+    //     this.wishListData = response.data;
+    //     this._WishlistService.whishItemNumber.next(response.data.length);
+    //   },
+    //   error: (error) => {
+    //     console.log(error);
+    //   },
+    // });
   }
 
   addToCart(id: any, element: HTMLButtonElement) {
@@ -73,7 +73,7 @@ export class ReleatedProducts {
     this._CartService.addToCart(cartItemDto).subscribe({
       next: (res) => {
         this.isLoading = false;
-        this._TostarService.success(res);
+        this._TostarService.success("Product Added To Cart");
         this._Render2.removeAttribute(element, 'disabled');
         this._CartService.cartNumber.next(res.numOfCartItems);
       },
