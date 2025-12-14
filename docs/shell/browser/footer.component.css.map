@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["projects/shell/src/app/components/footer/footer.component.scss"],
+  "sourcesContent": [":host{\r\n  margin-top: auto;\r\n}\r\n"],
+  "mappings": ";AAAA;AACE,cAAA;;",
+  "names": []
+}

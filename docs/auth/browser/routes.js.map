@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../projects/auth/src/app/auth.routes.ts"],
+  "sourcesContent": ["import { Routes } from '@angular/router';\r\n\r\nexport const routes: Routes = [\r\n  {\r\n    path: '',\r\n    redirectTo: 'login',\r\n    pathMatch: 'full'\r\n  },\r\n  {\r\n    path: 'login',\r\n    loadComponent: () =>\r\n      import('./components/login/login.component')\r\n        .then(c => c.LoginComponent)\r\n  },\r\n  {\r\n    path: 'register',\r\n    loadComponent: () =>\r\n      import('./components/register/register.component')\r\n        .then(c => c.RegisterComponent)\r\n  },\r\n  {\r\n    path: 'updatepassword',\r\n    loadComponent: () =>\r\n      import('./components/update-password/update-password.component')\r\n        .then(m => m.UpdatePasswordComponent)\r\n  },\r\n  {\r\n    path: 'forgotpassword',\r\n    loadComponent: () =>\r\n      import('./components/forgotpassword/forgotpassword.component')\r\n        .then(m => m.ForgotpasswordComponent)\r\n  }\r\n];\r\n\r\n"],
+  "mappings": ";;;;;AAEO,IAAM,SAAiB;EAC5B;IACE,MAAM;IACN,YAAY;IACZ,WAAW;;EAEb;IACE,MAAM;IACN,eAAe,MACb,OAAO,+BAAoC,EACxC,KAAK,OAAK,EAAE,cAAc;;EAEjC;IACE,MAAM;IACN,eAAe,MACb,OAAO,kCAA0C,EAC9C,KAAK,OAAK,EAAE,iBAAiB;;EAEpC;IACE,MAAM;IACN,eAAe,MACb,OAAO,yCAAwD,EAC5D,KAAK,OAAK,EAAE,uBAAuB;;EAE1C;IACE,MAAM;IACN,eAAe,MACb,OAAO,wCAAsD,EAC1D,KAAK,OAAK,EAAE,uBAAuB;;;",
+  "names": []
+}

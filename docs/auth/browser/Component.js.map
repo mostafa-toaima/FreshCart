@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../projects/auth/src/app/auth.component.ts"],
+  "sourcesContent": ["import { Component, signal } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'javazone-auth',\r\n  template: \"<p>javazone-auth</p>\",\r\n  standalone: true,\r\n})\r\nexport class AuthComponent {\r\n  protected readonly title = signal('auth');\r\n}\r\n"],
+  "mappings": ";;;AAAA,SAAS,WAAW,cAAc;;AAO5B,IAAO,gBAAP,MAAO,eAAa;EACL,QAAQ,OAAO,QAAM,GAAA,YAAA,CAAA,EAAA,WAAA,QAAA,CAAA,IAAA,CAAA,CAAA;;qCAD7B,gBAAa;EAAA;4EAAb,gBAAa,WAAA,CAAA,CAAA,eAAA,CAAA,GAAA,OAAA,GAAA,MAAA,GAAA,UAAA,SAAA,uBAAA,IAAA,KAAA;AAAA,QAAA,KAAA,GAAA;AAHb,MAAA,+BAAA,GAAA,GAAA;AAAG,MAAA,oBAAA,GAAA,eAAA;AAAa,MAAA,6BAAA;;;;;gFAGhB,eAAa,EAAA,WAAA,iBAAA,UAAA,2CAAA,YAAA,EAAA,CAAA;AAAA,GAAA;",
+  "names": []
+}

@@ -1,0 +1,1 @@
+import{RouterOutlet as i}from"@angular/router";import*as e from"@angular/core";var n=class o{static \u0275fac=function(t){return new(t||o)};static \u0275cmp=e.\u0275\u0275defineComponent({type:o,selectors:[["javazone-categories-main"]],decls:1,vars:0,template:function(t,s){t&1&&e.\u0275\u0275element(0,"router-outlet")},dependencies:[i],encapsulation:2})};export{n as a};
