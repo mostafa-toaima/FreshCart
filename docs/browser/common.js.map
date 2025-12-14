@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../projects/common/src/lib/common.ts", "../../../projects/common/src/public-api.ts", "../../../projects/common/src/common.ts"],
+  "sourcesContent": ["import { Component } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'common-common',\r\n  imports: [],\r\n  template: `\r\n    <p>\r\n      common works!\r\n    </p>\r\n  `,\r\n  styles: ``,\r\n})\r\nexport class Common {\r\n\r\n}\r\n", "/*\r\n * Public API Surface of common\r\n */\r\n\r\nexport * from './lib/common';\r\n", "/**\n * Generated bundle index. Do not edit.\n */\n\nexport * from './public-api';\n"],
+  "mappings": ";;;IAYaA,eAAAA,QAAM;;qCAANA,SAAM;EAAA;EAAN,OAAAC,YAAA,gBAAA,+BAAA;UAAAD;IAAME,WAAA,CAAA,CAAA,eAAA,CAAA;IAAAC,OAAA;IAAAC,MAAA;IAAAC,UAAA,SAAAC,gBAAAC,IAAAC,KAAA;AAAA,UAAAD,KAAA,GAAA;;;;;;;;;;+EAANP,QAAM,CAAA;UAVlBS;;gBACW;MAAeC,SAChB,CAAA;MAAEL,UACD;;;;;IAIT,CAAA;;;",
+  "names": ["Common", "\u0275cmp", "selectors", "decls", "vars", "template", "Common_Template", "rf", "ctx", "Component", "imports"]
+}

@@ -1,0 +1,1 @@
+import{a as t}from"./chunk-KXK54BKZ.js";import"./chunk-2VMXMS7J.js";t({products:"http://localhost:4201/remoteEntry.json",cart:"http://localhost:4202/remoteEntry.json",auth:"http://localhost:4203/remoteEntry.json"}).then(()=>import("./chunk-BG4DNRCK.js")).catch(o=>{throw o});
