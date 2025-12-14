@@ -17,11 +17,12 @@ import {
   RouterLinkActive,
   RouterModule,
 } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-nav-blank',
   standalone: true,
-  imports: [CommonModule, RouterModule, RouterLink, RouterLinkActive],
+  imports: [CommonModule, RouterModule, RouterLink, RouterLinkActive, FormsModule],
   templateUrl: './nav-blank.component.html',
   styleUrl: './nav-blank.component.scss',
 })
